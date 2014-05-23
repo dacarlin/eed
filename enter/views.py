@@ -11,6 +11,12 @@ def browse(request):
 def index(request):
   return render(request, 'enter/index.html')
 
+def help(request):
+  return render(request, 'enter/help.html')
+
+def systems(request):
+  return render(request, 'enter/systems.html')
+
 def submit(request):
   entry = get_list_or_404(Entry)
   return render(request, 'enter/submit.html', {'entry': entry})

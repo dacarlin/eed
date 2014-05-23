@@ -47,8 +47,10 @@ footer {
 	font-family: "Source Serif Pro";
 	font-weight: 200;
 	font-size: 24px/34px;
-	margin: 100px 0 100px 100px;
-
+	margin: 50px 100px 50px 100px;
+  padding: 50px 0 50px 0;
+  background: white url('images/seal.jpg') right top no-repeat;
+  background-size: auto 100%;
 }
 
 footer img {
