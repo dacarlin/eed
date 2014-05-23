@@ -14,7 +14,7 @@ class Entry(models.Model):
   mutations   = models.CharField(max_length=100)
   substrate   = models.CharField(max_length=100)
  
-  _yield      = models.FloatField() 
+  yyield      = models.FloatField() 
   k_cat       = models.FloatField() 
   err_k_cat   = models.FloatField()
   k_M         = models.FloatField()
