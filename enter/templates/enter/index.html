@@ -11,41 +11,16 @@
 			<br><small>Portal to enzyme engineering</small>
 		</h1>
 		<nav>
-			<a href="browse.html">Browse</a>
-			<a href="index.html">Submit</a>
+			<a href="/">Home</a>
+			<a href="/systems/">Systems</a>
+      <a href="/help/">Help</a>
+			<a href="/help/">Browse</a>
+			<a href="/submit/">Submit</a>
 		</nav>
 
 		<div id="blue">
-      
-    <h2>Browse the EED</h2>
-    <table>
-      <thead>
-        <tr>
-          <td>Enzyme system</td>
-          <td>Uniprot accession number</td>
-          <td>PDB ID</td>
-          <td>Enzyme classification number</td>
-          <td>Mutation</td>
-          <td>Yield <span>mg/mL</span> </td>
-          <td>Purity</td>
-          <td>Substrate</td>
-          <td><em>k</em><sub>cat</sub> <span>1/s</span> </td>
-          <td>K<sub>M</sub></td>
-          <td>k<sub>cat</sub>/K<sub>M</sub></td>
-          <td>Gel image</td>
-        </tr>
-      </thead>
-      <tbody>
-        {% for entry in entry_list %}
-        <tr>
-          <td alt="EC {{entry.ec_number}}, UniProt {{ entry.uniprot_ID }}">
-            {{ entry.system }}
-          </td>
-        </tr>
-        {% endfor %}
-      <tfoot>
-      </tfoot>
-    </table>
+
+      <h1>Welcome to the EED</h1>
 
 		</div> <!-- closes div#blue -->
 		<footer>
