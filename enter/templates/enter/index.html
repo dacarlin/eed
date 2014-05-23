@@ -4,6 +4,10 @@
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'enter/style.css' %}">
 		<title>Engineered Enzyme Database at UC Davis</title>
+    <style>
+      body, body * , body * * { text-align: center; margin-left: 0; }
+
+    </style>
 	</head>
 	<body>
 		<h1>
@@ -18,13 +22,8 @@
 			<a href="/submit/">Submit</a>
 		</nav>
 
-		<div id="blue">
-
-      <h1>Welcome to the EED</h1>
-
-		</div> <!-- closes div#blue -->
 		<footer>
-			<img src="images/seal.jpg">
+    <img src="{% static 'enter/images/seal.jpg' %}">
 			<p>Engineered Enzyme Database at the University of California, Davis</p>
 			<p>UC Davis Genome Center, 451 Health Sciences Drive, Davis CA 95616</p>
 		</footer>
