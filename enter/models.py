@@ -9,14 +9,14 @@ class Entry(models.Model):
   SYSTEMS = (('BGL', 'Bagel'), )
   system      = models.CharField(max_length=80, choices=SYSTEMS)
   uniprot_ID  = models.CharField(max_length=6)
-  pdb_ID      = models.CharField(max_length=4)
-  ec_number   = models.CharField(max_length=12)
+  pdb_ID      = models.CharField("PDB ID", max_length=4)
+  ec_number   = models.CharField("EC number", max_length=12)
 
   mutations   = models.CharField(max_length=100)
   substrate   = models.CharField(max_length=100)
  
-  yyield      = models.FloatField() 
-  k_cat       = models.FloatField() 
+  yyield      = models.FloatField("Yield (mg/mL)") 
+  k_cat       = models.FloatField("k_cat") 
   err_k_cat   = models.FloatField()
   k_M         = models.FloatField()
   err_K_M     = models.FloatField()
