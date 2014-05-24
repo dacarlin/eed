@@ -31,4 +31,5 @@ class EntryForm(ModelForm):
   class Meta:
     model = Entry
     fields = '__all__'
-    exclude = ['pub_date']
+    exclude = [
+        'pub_date', 'entry_ID', 'uniprot_ID', 'ec_number', 'pdb_ID' ]

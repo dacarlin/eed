@@ -3,9 +3,8 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: url('images/glu.png') top left no-repeat #fff;
+	background: url('images/glu.png') top right no-repeat #fff;
 	background-size: 200px;
-	background-position: 533px 0;
 }
 
 h1 {
@@ -38,6 +37,7 @@ nav a {
 div#blue {
 	background: #e1ecf5;
 	font-family: "Source Serif Pro";
+  font-size: 18px;
 	font-weight: 400;
 	padding: 100px;
 	line-height: 196%;
@@ -58,7 +58,7 @@ footer img {
 	margin-left: -22px;
 }
 
-/* specific to index (Submit) view */
+/* specific to submit view */
 
 hr {
 	border: 1px solid #fff;
@@ -72,32 +72,14 @@ label + input, label + select {
 	left: 220px;
 }
 
-h3 span {
-	display: block;
-	position: absolute;
-	margin-top: 10px;
-	left: 400px;
-	font-size: 14px;
-	font-weight: 400;
-	color: #666;
-	width: 50%;
-	line-height: 18px;
+/* browse view */
+
+thead {
+  font-weight: 900;
 }
 
-/* specific to detail (Browse) view */
-
-h3.filter {
-	font-weight: normal;
+thead td {
+  border-bottom: 4px solid navy;
 }
 
-h3.filter small { opacity: 0.4; padding-right: 10px}
-
-table {
-	border: none;
-	width: 100%;
-}
-
-tr.header { font-weight: 900; }
-tr.header td { border-bottom: 2px solid #444; }
-
-td { border-bottom: 1px solid #aaa; }
+tbody td { border-bottom: 4px solid navy; }
