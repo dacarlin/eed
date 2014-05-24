@@ -1,39 +1,15 @@
-<!doctype html>
-<html>
-	<head>
-    {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'enter/style.css' %}">
-		<title>Engineered Enzyme Database at UC Davis</title>
-	</head>
-	<body>
-		<h1>
-			<big>EED</big>
-			<br><small>Portal to enzyme engineering</small>
-		</h1>
-		<nav>
-			<a href="../">Home</a>
-			<a href="systems/">Systems</a>
-      <a href="help/">Help</a>
-			<a href="browse/">Browse</a>
-			<a href="submit/">Submit</a>
-		</nav>
+{% extends "head.html" %}
+{% block content %}
+<div id="blue">
+  <h2>How to use the EED</h2>
+  <p>Lorem</p>
 
-    <div id="blue">
-      <h2>How to use the EED</h2>
-      <p>Lorem</p>
+  <h2>How to cite the EED</h2>
+  <p>Lorem</p>
 
-      <h2>How to cite the EED</h2>
-      <p>Lorem</p>
-
-      <h2>How to contact us for help</h2>
-      <p>Help info</p>
+  <h2>How to contact us for help</h2>
+  <p>Help info</p>
 
 
-    </div> <!-- closes div#blue -->
-
-		<footer>
-			<p>Engineered Enzyme Database at the University of California, Davis</p>
-			<p>UC Davis Genome Center, 451 Health Sciences Drive, Davis CA 95616</p>
-		</footer>
-	</body>
-</html>
+</div> <!-- closes div#blue -->
+{% endblock content %}

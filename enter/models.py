@@ -6,7 +6,8 @@ class Entry(models.Model):
   entry_ID    = models.IntegerField()
   pub_date    = models.DateTimeField()
 
-  system      = models.CharField(max_length=80)
+  SYSTEMS = (('BGL', 'Bagel'), )
+  system      = models.CharField(max_length=80, choices=SYSTEMS)
   uniprot_ID  = models.CharField(max_length=6)
   pdb_ID      = models.CharField(max_length=4)
   ec_number   = models.CharField(max_length=12)
@@ -24,4 +25,10 @@ class Entry(models.Model):
 
   lane_image  = models.FileField(upload_to="your/mom")
 
+from django.forms import ModelForm
 
+class EntryForm(ModelForm):
+  class Meta:
+    model = Entry
+    fields = '__all__'
+    exclude = ['pub_date']

@@ -1,58 +1,33 @@
-<!doctype html>
-<html>
-	<head>
-    {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'enter/style.css' %}">
-		<title>Engineered Enzyme Database at UC Davis</title>
-	</head>
-	<body>
-		<h1>
-			<big>EED</big>
-			<br><small>Portal to enzyme engineering</small>
-		</h1>
-		<nav>
-			<a href="../">Home</a>
-			<a href="systems/">Systems</a>
-      <a href="help/">Help</a>
-			<a href="browse/">Browse</a>
-			<a href="submit/">Submit</a>
-		</nav>
+{% extends "head.html" %}
+{% block content %}
+<div id="blue">
+<h2>Enzyme systems</h2>
+  <h3>Beta-glucosidease B</h3>
+  <ul>
+    <li>UniProt ID: <a href="">xxxxxxxx</a></li>
+    <li>PDB ID: <a href="">xxxx</a></li>
+  </ul>
 
-    <div id="blue">
-      <h2>Enzyme systems</h2>
-        <h3>Beta-glucosidease B</h3>
-        <ul>
-          <li>UniProt ID: <a href="">xxxxxxxx</a></li>
-          <li>PDB ID: <a href="">xxxx</a></li>
-        </ul>
+    <h4>Design</h4>
+    <ul>
+      <li>Foldit can be obtained from <a href="">S. Cooper's page
+          at the University of Washington</a>.</li>
+      <li><a href="">Foldit files for beta-glucosidease B</a></li>
+    </ul>
 
-          <h4>Design</h4>
-          <ul>
-            <li>Foldit can be obtained from <a href="">S. Cooper's page
-                at the University of Washington</a>.</li>
-            <li><a href="">Foldit files for beta-glucosidease B</a></li>
-          </ul>
+    <h4>Build</h4>
+    <ul>
+      <li>Mutagenesis options</li>
+      <li>Protocols for expression and purification</li>
+    </ul>
+    
+    <h4>Test</h4>
+    <ul>
+      <li>Protocols for kinetic assays</li>
+      <li>Data analysis tools</li>
+    </ul>
 
-          <h4>Build</h4>
-          <ul>
-            <li>Mutagenesis options</li>
-            <li>Protocols for expression and purification</li>
-          </ul>
-          
-          <h4>Test</h4>
-          <ul>
-            <li>Protocols for kinetic assays</li>
-            <li>Data analysis tools</li>
-          </ul>
+  <h3>Mannitol dehydrogenase</h3>
 
-        <h3>Mannitol dehydrogenase</h3>
-
-    </div>
-
-		<footer>
-			<p>Engineered Enzyme Database at the University of California, Davis</p>
-			<p>UC Davis Genome Center, 451 Health Sciences Drive, Davis CA 95616</p>
-      <p><small>Need help? Email <a href="">help@enzymedb.org</a></small></p>
-		</footer>
-	</body>
-</html>
+</div>
+{% endblock content %}

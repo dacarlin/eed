@@ -1,40 +1,11 @@
-<!doctype html>
-<html>
-	<head>
-    {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'enter/style.css' %}">
-		<title>Engineered Enzyme Database at UC Davis</title>
-	</head>
-	<body>
-		<h1>
-			<big>EED</big>
-			<br><small>Portal to enzyme engineering</small>
-		</h1>
-		<nav>
-			<a href="/">Home</a>
-			<a href="/systems/">Systems</a>
-      <a href="/help/">Help</a>
-			<a href="/help/">Browse</a>
-			<a href="/submit/">Submit</a>
-		</nav>
-
-		<div id="blue">
-
-    <h2>Submit your data to the EED</h2>
-
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-    <form action="{% url 'entry:submit' entry.id %}" method="post">
-      {% csrf_token %}
-      <h3>Enzyme system</h3>
-      <input type="radio"><label>Beta-glucosidase B</label>
-    </form>
-
-		</div> <!-- closes div#blue -->
-		<footer>
-			<img src="images/seal.jpg">
-			<p>Engineered Enzyme Database at the University of California, Davis</p>
-			<p>UC Davis Genome Center, 451 Health Sciences Drive, Davis CA 95616</p>
-		</footer>
-	</body>
-</html>
+{% extends "head.html" %}
+{% block content %}
+<div id=blue>
+  <h2>Submit to the EED</h2>
+  <p>Placeholder text</p>
+  <form action="/submit/" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+  </form>
+</div>
+{% endblock content %}
