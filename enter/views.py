@@ -25,3 +25,6 @@ def submit(request):
    # else: 
   form = EntryForm()
   return render(request, 'enter/submit.html', {'form':form,})
+
+def confirm(request):
+  return render(request, 'enter/confirm.html')
