@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
@@ -18,12 +18,14 @@ def systems(request):
   return render(request, 'enter/systems.html')
 
 def submit(request):
-  # if request.method == 'POST' 
-   # form = EntryForm(request.POST)
-   # if form.is_valid():
-    #  return HttpResponseRedirect('/confirm/')
-   # else: 
-  form = EntryForm()
+  if request.method == 'POST':
+    form = EntryForm(request.POST)
+    if form.is_valid():
+      instance = EntryForm(request.POST, request.FILES)
+      data = instance.save() # add arg commit=False to create but not save
+      return HttpResponseRedirect('/confirm/')
+  else: 
+    form = EntryForm()
   return render(request, 'enter/submit.html', {'form':form,})
 
 def confirm(request):

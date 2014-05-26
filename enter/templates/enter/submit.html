@@ -3,7 +3,8 @@
 <div id=blue>
   <h2>Submit to the EED</h2>
   <p>Placeholder text</p>
-  <form action="/submit/" method="post">{% csrf_token %}
+  <form enctype="multipart/form-data" method="post" action="/submit/">
+  {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Submit">
   </form>
