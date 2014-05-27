@@ -1,12 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 <div id=blue>
-  <h2>Submit to the EED</h2>
-  <p>Placeholder text</p>
-  <form enctype="multipart/form-data" method="post" action="/submit/">
+  {% if form.errors %}
+    <h2>Please correct the following errors</h2>
+  {% else %}
+    <h2>Submit to the EED</h2>
+  {% endif %}
+  <form enctype="multipart/form-data" method="post" action="/enter/submit/">
   {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Submit">
+    <input type="hidden" name="{{ stage_field }}" value="1" />
+    <p><input type="submit" value="Preview" /></p>
   </form>
 </div>
 {% endblock content %}

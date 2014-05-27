@@ -18,7 +18,7 @@ def systems(request):
   return render(request, 'enter/systems.html')
 
 def submit(request):
-  return render(request, 'enter/submit.html', {'form':form,})
+  return render(request, 'enter/submit.html')
 
 def success(request):
   return render(request, 'enter/success.html')
