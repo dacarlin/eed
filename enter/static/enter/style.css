@@ -3,102 +3,72 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: url('images/glu.png') top right no-repeat #fff;
-	background-size: 200px;
+	background: url('images/seek.png') center -190px no-repeat #fff;
+  background-size: 1200px;
 }
 
 h1 {
-	font-family: "Source Serif Pro";
-	font-weight: 100;
-	font-size: 33px;
-	margin: 100px 0 10px 100px;
+	font: bold 55px/44px "Source Serif Pro";
+  text-align: center;
+  margin: 123px auto 0 auto;
+  padding: 23px;
 }
 
-h1 big {
-	display: inline-block;
-  font-size: 55px;
-	font-weight: 900;
-	margin-bottom: 20px;
-}
+h1 small { font: normal 24px/24px "Source Serif Pro"; }
 
 nav {
-	font-family: "Source Serif Pro";
-	font-weight: 800;
-	margin: 0 0 80px 100px;
-	font-size: 30px;
+  text-align: center;
+  font: bold 30px/30px "Source Serif Pro";
+  margin: 25px 0 50px 0;
 }
 
 nav a {
 	text-decoration: none;
-	padding: 0 20px 6px 0;
-	color: #555760;
+	padding: 6px 20px;
+	color: navy;
 }
 
-/*
-
-muted | muted | dark | bright | white
-
-Primary Color (blue)
-8A90AD	555760	060F41	DFE3FA	F2F3FA
-Secondary Color A (violet)
-9589AD	585560	1A0641	E8DEFA	F4F2FA
-Secondary Color B (green)
-7C959F	4D5558	052C3C	DCF1F9	F0F6F9
-
-http://colorschemedesigner.com/#3T51T7nvKU8WT
-
-*/
-
 div#blue {
-	background: #F2F3FA;
+	background: white;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 	font-family: "Source Serif Pro";
   font-size: 18px;
 	font-weight: 400;
-	padding: 100px;
+	padding: 50px 100px;
 	line-height: 196%;
 }
 
 footer {
-	font-family: "Source Serif Pro";
-	font-weight: 200;
-	font-size: 24px/34px;
+	font: normal 16px/20px "Source Serif Pro";
 	margin: 50px 100px 50px 100px;
-  padding: 50px 0 50px 0;
+  padding: 50px 0 25px 0;
   background: white url('images/seal.jpg') right top no-repeat;
   background-size: auto 100%;
 }
 
-footer img {
-	width: 200px;
-	margin-left: -22px;
+footer img { width: 200px; } /* for index page */
+p#tagline {
+  font: italic 24px/30px "Hoefler Text";
+  text-align: center;
 }
 
 /* specific to submit view */
 
-hr {
-	border: 1px solid #fff;
-	margin: 2em 0 2em 0;
-}
-
 form { position: relative; }
 
-label + input, label + select {
+label + input, label + select, input {
 	position: absolute;
-	left: 220px;
+	left: 280px;
+  font: normal 18px/18px "Source Serif Pro";
 }
+
+hr { border: none; height: 40px; } /* systems */
 
 /* browse view */
 
-table {
-	width: 100%;
-}
-
-thead {
-  font-weight: 900;
-}
-
-thead td {
-  border-bottom: 4px solid navy;
-}
-
-tbody td { border-bottom: 4px solid navy; }
+table { width: 100%; }
+td { padding: 0 8px; vertical-align: top; }
+thead { font-weight: 900; background: white; }
+tr.units td { font-weight: 100; border-bottom: 4px solid navy; }
+table.browse tbody td { border-bottom: 1px solid navy; }

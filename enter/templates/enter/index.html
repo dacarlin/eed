@@ -1,31 +1,6 @@
-<!doctype html>
-<html lang=en>
-	<head>
-		<meta charset=utf8>
-    {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'enter/style.css' %}">
-		<title>Engineered Enzyme Database at UC Davis</title>
-    <style>
-      body, body * , body * * { text-align: center; margin-left: 0; }
-      footer { background: white; margin: 0; padding: 100px}
-    </style>
-	</head>
-	<body>
-		<h1>
-			<big>EED</big>
-			<br><small>Portal to enzyme engineering</small>
-		</h1>
-		<nav>
-			<a href="/enter/">Home</a>
-			<a href="/enter/systems/">Systems</a>
-      <a href="/enter/help/">Help</a>
-			<a href="/enter/browse/">Browse</a>
-			<a href="/enter/submit/">Submit</a>
-		</nav>
-		<footer>
-    <img src="{% static 'enter/images/seal.jpg' %}">
-			<p>Engineered Enzyme Database at the University of California, Davis</p>
-			<p>UC Davis Genome Center, 451 Health Sciences Drive, Davis CA 95616</p>
-		</footer>
-	</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<div id="blue">
+  <p id="tagline">The Standardized Engineered Enzyme Kinetics Database</p>
+</div>
+{% endblock %}
