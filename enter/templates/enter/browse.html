@@ -34,7 +34,21 @@
         {{ entry.purity }}
       </td>
       <td>
-        {{ entry.substrate }}
+        <!-- API key e60e3193ed1c4299aedc9f7cc7e5a0a8 for Entrez search -->
+        <!-- or add DB spot for substrate CID -->
+        <a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.substrate}}">{{ entry.substrate }}</a>
+      </td>
+      <td>
+        {{ entry.k_cat }} &plusmn; {{ entry.err_k_cat }}
+      </td>
+      <td>
+        {{ entry.K_M }} &plusmn; {{ entry.err_K_M }}
+      </td>
+      <td>
+        {{ entry.over }} &plusmn; {{ entry.err_over }}
+      </td>
+      <td>
+        <!-- lane image -->
       </td>
     </tr>
     {% endfor %}

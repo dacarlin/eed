@@ -18,24 +18,39 @@ h1 big {
 	display: inline-block;
   font-size: 55px;
 	font-weight: 900;
-	margin-bottom: 25px;
+	margin-bottom: 20px;
 }
 
 nav {
 	font-family: "Source Serif Pro";
 	font-weight: 800;
-	margin: 0 0 100px 100px;
+	margin: 0 0 80px 100px;
 	font-size: 30px;
 }
 
 nav a {
 	text-decoration: none;
 	padding: 0 20px 6px 0;
-	color: #01408d;
+	color: #555760;
 }
 
+/*
+
+muted | muted | dark | bright | white
+
+Primary Color (blue)
+8A90AD	555760	060F41	DFE3FA	F2F3FA
+Secondary Color A (violet)
+9589AD	585560	1A0641	E8DEFA	F4F2FA
+Secondary Color B (green)
+7C959F	4D5558	052C3C	DCF1F9	F0F6F9
+
+http://colorschemedesigner.com/#3T51T7nvKU8WT
+
+*/
+
 div#blue {
-	background: #e1ecf5;
+	background: #F2F3FA;
 	font-family: "Source Serif Pro";
   font-size: 18px;
 	font-weight: 400;
@@ -73,6 +88,10 @@ label + input, label + select {
 }
 
 /* browse view */
+
+table {
+	width: 100%;
+}
 
 thead {
   font-weight: 900;
