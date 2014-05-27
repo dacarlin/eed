@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'enter',
+    'django.contrib.formtools',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -3,7 +3,7 @@
 	<head>
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'enter/style.css' %}">
-    <title>{% block title %}</title>
+    <title>{% block title %}Enzyme Engineering Portal{% endblock %}</title>
 	</head>
 	<body>
 		<h1>
@@ -11,14 +11,14 @@
 			<br><small>Enzyme engineering portal</small>
 		</h1>
 		<nav>
-			<a href="/">Home</a>
-			<a href="/systems">Systems</a>
-      <a href="/help">Help</a>
-			<a href="/browse">Browse</a>
-			<a href="/submit">Submit</a>
+			<a href="/enter/">Home</a>
+			<a href="/enter/systems">Systems</a>
+      <a href="/enter/help">Help</a>
+			<a href="/enter/browse">Browse</a>
+			<a href="/enter/submit">Submit</a>
 		</nav>
 
-    {% block content %}
+    {% block content %}Default text{% endblock content %}
 
 		<footer>
 		<p>Engineered Enzyme Database at the University of California, Davis</p>

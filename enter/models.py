@@ -1,16 +1,14 @@
 from django.db import models
 
 class Entry(models.Model):
-  # defines one entry in the EED
-  
-  entry_ID    = models.IntegerField()
-  pub_date    = models.DateTimeField()
+  # defines one entry in the EED 
+  pub_date    = models.DateTimeField(auto_now=True)
 
   SYSTEMS = (('BGL', 'Bagel'), )
   system      = models.CharField(max_length=80, choices=SYSTEMS)
-  uniprot_ID  = models.CharField(max_length=6)
-  pdb_ID      = models.CharField("PDB ID", max_length=4)
-  ec_number   = models.CharField("EC number", max_length=12)
+  uniprot_ID  = models.CharField(max_length=6, editable=False)
+  pdb_ID      = models.CharField("PDB ID", max_length=4, editable=False)
+  ec_number   = models.CharField("EC number", max_length=12, editable=False)
 
   mutations   = models.CharField(max_length=100)
   substrate   = models.CharField(max_length=100)
@@ -23,13 +21,25 @@ class Entry(models.Model):
   over        = models.FloatField()
   err_over    = models.FloatField()
 
-  lane_image  = models.FileField(upload_to="your/mom")
+  lane_image  = models.FileField(upload_to="your/mom", blank=True, null=True)
 
 from django.forms import ModelForm
+from django.contrib.formtools.preview import FormPreview
+from django.http import HttpResponseRedirect
 
 class EntryForm(ModelForm):
   class Meta:
     model = Entry
     fields = '__all__'
-    exclude = [
-        'pub_date', 'entry_ID', 'uniprot_ID', 'ec_number', 'pdb_ID' ]
+    exclude = [ ]
+
+  def save(self):
+    if not self.auto_id:
+      self.uniprot_ID = 'uni'
+      self.ec_number = '2.3.2'
+      self.pdb_ID = 'hgg2'
+    super(EntryForm, self).save()
+
+class EntryFormPreview(FormPreview):
+  def done(self, request, cleaned_data):
+    return HttpResponseRedirect('/enter/success')
