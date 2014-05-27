@@ -25,7 +25,7 @@ class Entry(models.Model):
   cid         = models.CharField(max_length=5)
   over        = models.FloatField()
   err_over    = models.FloatField()
-  public      = models.BooleanField(False)
+  public      = models.BooleanField(default=False)
 
 class Mutations(models.Model):
   entry = models.ForeignKey(Entry, related_name="muts")
