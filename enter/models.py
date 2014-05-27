@@ -25,6 +25,12 @@ class Entry(models.Model):
 
   lane_image  = models.FileField(upload_to="uploads", blank=True, null=True)
 
+class Mutations(models.Model):
+  entry = models.ForeignKey(Entry, related_name="muts")
+  original_aa = models.CharField(max_length=1)
+  position = models.IntegerField()
+  mutant_aa = models.CharField(max_length=1)
+
 class EntryForm(ModelForm):
   class Meta:
     model = Entry
@@ -42,6 +48,8 @@ class EntryForm(ModelForm):
       instance.pdb_ID = '2JIE'
       instance.ec_number = '3.2.1.21'
       instance.substrate = '4-nitrophenyl-beta-D-glucoside'
+
+    # MDH
     if instance.system == 'MDH':
       instance.uniprot_ID = 'MDH Uniprot'
       instance.pdb_ID = 'MDH PDB'

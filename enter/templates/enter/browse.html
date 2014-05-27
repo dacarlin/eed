@@ -21,8 +21,8 @@
   <tbody>
     {% for entry in entry_list %}
     <tr>
-      <td alt="EC {{entry.ec_number}}, UniProt {{ entry.uniprot_ID }}">
-        {{ entry.system }}
+      <td title="EC {{entry.ec_number}}, UniProt {{ entry.uniprot_ID }}, PDB {{ entry.pdb_ID }}">
+        <a href="/enter/systems/">{{ entry.system }}</a>
       </td>
       <td>
         {{ entry.mutations }}
