@@ -49,13 +49,19 @@
         <a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.substrate}}">{{ entry.substrate }}</a>
       </td>
       <td>
-        {{ entry.k_cat }} &plusmn; {{ entry.err_k_cat }}
+        {{ entry.k_cat|stringformat:".2e" }} 
+        &plusmn; 
+        {{ entry.err_k_cat|stringformat:".2e" }}
       </td>
       <td>
-        {{ entry.K_M }} &plusmn; {{ entry.err_K_M }}
+        {{ entry.K_M|stringformat:".2e" }} 
+        &plusmn; 
+        {{ entry.err_K_M|stringformat:".2e" }}
       </td>
       <td>
-        {{ entry.over }} &plusmn; {{ entry.err_over }}
+        {{ entry.over|stringformat:".2e" }} 
+        &plusmn; 
+        {{ entry.err_over|stringformat:".2e" }}
       </td>
       <td>
         <!-- lane image -->
