@@ -33,13 +33,15 @@ class EntryForm(ModelForm):
     fields = '__all__'
     exclude = [ ]
 
-  def save(self):
-    if not self.auto_id:
-      self.uniprot_ID = 'uni'
-      self.ec_number = '2.3.2'
-      self.pdb_ID = 'hgg2'
-    super(EntryForm, self).save()
+  #def save(self):
+   # if not self.auto_id:
+    #  self.uniprot_ID = 'uni'
+     # self.ec_number = '2.3.2'
+     # self.pdb_ID = 'hgg2'
+    #super(EntryForm, self).save()
 
 class EntryFormPreview(FormPreview):
   def done(self, request, cleaned_data):
+    f = EntryForm(request.POST)
+    n = f.save()
     return HttpResponseRedirect('/enter/success')
