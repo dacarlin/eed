@@ -5,7 +5,7 @@ from django.views import generic
 from enter.models import Entry, EntryForm
 
 def browse(request):
-  entry_list = Entry.objects.all()
+  entry_list = Entry.objects.filter(public=True)
   return render(request, 'enter/browse.html', {'entry_list': entry_list})
 
 def index(request):
