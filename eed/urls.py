@@ -10,11 +10,4 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^enter/', include('enter.urls')),
-  url(r'^browse/', views.browse, name='browse'),
-  url(r'^submit/', views.submit, name='submit'),
-  url(r'^help/'  , views.help,   name='help'),
-  url(r'^systems/', views.systems, name='systems'),
 )
-
-
-
