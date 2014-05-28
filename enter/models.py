@@ -19,9 +19,10 @@ class Entry(models.Model):
   K_M         = models.FloatField("K_M (mol/L)")
   err_K_M     = models.FloatField("Standard error, K_M")
   lane_image  = models.FileField(upload_to="uploads", blank=True, null=True)
+  submitter   = models.CharField("Name", max_length=100, help_text="Your name")
+  institution = models.CharField("School", max_length=100)
   password    = models.CharField(max_length=12, validators=[check_password])
 
-  # I'll handle these
   pub_date    = models.DateTimeField(auto_now=True)
   uniprot_ID  = models.CharField(max_length=6)
   pdb_ID      = models.CharField(max_length=4)
@@ -33,11 +34,9 @@ class Entry(models.Model):
   public      = models.BooleanField(default=False)
 
 
-class Mutations(models.Model):
-  entry = models.ForeignKey(Entry, related_name="muts")
-  original_aa = models.CharField(max_length=1)
-  position = models.IntegerField()
-  mutant_aa = models.CharField(max_length=1)
+  def __str__(self):
+    return "Entry " + str(self.id) + " (" + self.system + \
+           ") published " + str(self.pub_date)[:11] 
 
 class EntryForm(ModelForm):
   class Meta:
@@ -65,6 +64,9 @@ class EntryForm(ModelForm):
       instance.ec_number = 'MDH EC'
       instance.substrate = 'MDH substrate'
       instance.cid = 'mdh substrate'
+
+    # Parse mutations 
+    # Handle space, comma, and plus-delimited lists of one or more
       
     # Calculate k_cat/K_M and propagate standard error
     instance.over = instance.k_cat / instance.K_M
