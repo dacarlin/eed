@@ -15,6 +15,7 @@ class Entry(models.Model):
   K_M         = models.FloatField("K_M (mol/L)")
   err_K_M     = models.FloatField("Standard error, K_M")
   lane_image  = models.FileField(upload_to="uploads", blank=True, null=True)
+  password    = models.CharField(max_length=12)
 
   # I'll handle these
   pub_date    = models.DateTimeField(auto_now=True)
