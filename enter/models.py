@@ -1,8 +1,12 @@
 from django.db import models
-from django.forms import ModelForm
+from django.forms import ModelForm, ValidationError
 from django.contrib.formtools.preview import FormPreview
 from django.http import HttpResponseRedirect
 from django.utils.safestring import mark_safe # for including HTML in names
+
+def check_password(password):
+  if password != 'seek':
+    raise ValidationError("Please enter the password to submit")
 
 class Entry(models.Model):
   SYSTEMS = ( ("BglB", "Beta-glucosidease B"), ("MDH", "Mannitol dehydrogenase") )
@@ -15,7 +19,7 @@ class Entry(models.Model):
   K_M         = models.FloatField("K_M (mol/L)")
   err_K_M     = models.FloatField("Standard error, K_M")
   lane_image  = models.FileField(upload_to="uploads", blank=True, null=True)
-  password    = models.CharField(max_length=12)
+  password    = models.CharField(max_length=12, validators=[check_password])
 
   # I'll handle these
   pub_date    = models.DateTimeField(auto_now=True)
@@ -27,6 +31,7 @@ class Entry(models.Model):
   over        = models.FloatField()
   err_over    = models.FloatField()
   public      = models.BooleanField(default=False)
+
 
 class Mutations(models.Model):
   entry = models.ForeignKey(Entry, related_name="muts")
