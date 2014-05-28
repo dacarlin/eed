@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <td>Enzyme</td>
-      <td>Mutation</td>
+      <td>Mutations</td>
       <td>Yield</td>
       <td>Purity</td>
       <td>Substrate</td>
@@ -31,7 +31,9 @@
   <tbody>
     {% for entry in entry_list %}
     <tr>
-      <td title="EC {{entry.ec_number}}, UniProt {{ entry.uniprot_ID }}, PDB {{ entry.pdb_ID }}">
+      <td title="EC {{entry.ec_number}}, 
+                 UniProt {{ entry.uniprot_ID }}, 
+                 PDB {{ entry.pdb_ID }}">
         <a href="/enter/systems/">{{ entry.system }}</a>
       </td>
       <td>
@@ -44,9 +46,7 @@
         {{ entry.purity }}
       </td>
       <td>
-        <!-- API key e60e3193ed1c4299aedc9f7cc7e5a0a8 for Entrez search -->
-        <!-- or add DB spot for substrate CID -->
-        <a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.substrate}}">{{ entry.substrate }}</a>
+        <a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.cid}}">{{ entry.substrate }}</a>
       </td>
       <td>
         {{ entry.k_cat|stringformat:".2e" }} 
