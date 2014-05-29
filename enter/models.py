@@ -9,7 +9,7 @@ def check_password(password):
     raise ValidationError("Please enter the password to submit")
 
 class Entry(models.Model):
-  SYSTEMS = ( ("BglB", "Beta-glucosidease B"), ("MDH", "Mannitol dehydrogenase") )
+  SYSTEMS = ( ("BglB", "Beta-glucosidase B"), ("MDH", "Mannitol dehydrogenase") )
   system      = models.CharField(max_length=80, choices=SYSTEMS)
   mutations   = models.CharField(max_length=100) 
   # for parsing mutations ([a-zA-Z])(\d+)([a-zA-Z)\+*
@@ -19,7 +19,7 @@ class Entry(models.Model):
   K_M         = models.FloatField("K_M (mol/L)")
   err_K_M     = models.FloatField("Standard error, K_M")
   lane_image  = models.FileField(upload_to="uploads", blank=True, null=True)
-  submitter   = models.CharField("Name", max_length=100, help_text="Your name")
+  submitter   = models.CharField("Name", max_length=100)
   institution = models.CharField("School", max_length=100)
   password    = models.CharField(max_length=12, validators=[check_password])
 

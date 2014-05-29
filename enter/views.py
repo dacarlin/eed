@@ -21,4 +21,5 @@ def submit(request):
   return render(request, 'enter/submit.html')
 
 def success(request):
-  return render(request, 'enter/success.html')
+  entry_list = Entry.objects.all().order_by('-pub_date')
+  return render(request, 'enter/browse.html', {'entry_list': entry_list})
