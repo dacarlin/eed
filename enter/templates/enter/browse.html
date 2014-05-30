@@ -2,69 +2,42 @@
 {% block title %}{% endblock %}
 {% block content %}
 <div id="blue">
-<table class="browse">
+<table id="browse">
   <thead>
     <tr>
       <td>Enzyme</td>
+      <td>EC</td>
       <td>Mutations</td>
-      <td>Yield</td>
-      <td>Purity</td>
       <td>Substrate</td>
-      <td><em>k</em><sub>cat</sub></td>
-      <td>K<sub>M</sub></td>
+      <td><em>k</em><sub>cat</sub>&nbsp;(1/min)</td>
+      <td>K<sub>M</sub>&nbsp;(mol/L)</td>
       <td><em>k</em><sub>cat</sub>/K<sub>M</sub></td>
-      <td>Image</td>
     </tr>
-    <tr class="units">
-      <td></td>
-      <td></td>
-      <td>mg/mL</td>
-      <td></td>
-      <td></td>
-      <td>1/min</td>
-      <td>mol/L</td>
-      <td>mol/L/min</td>
-      <td></td>
-    </td>
   </thead>
 
   <tbody>
     {% for entry in entry_list %}
     <tr>
-      <td title="EC {{entry.ec_number}}, 
-                 UniProt {{ entry.uniprot_ID }}, 
-                 PDB {{ entry.pdb_ID }}">
+      <td title="UniProt {{ entry.uniprot_ID }}, PDB {{ entry.pdb_ID }}">
         <a href="/enter/systems/">{{ entry.system }}</a>
+      </td>
+      <td>
+        {{ entry.ec_number }}
       </td>
       <td>
         {{ entry.mutations }}
       </td>
       <td>
-        {{ entry.yyield }}
-      </td>
-      <td>
-        {{ entry.purity }}
-      </td>
-      <td>
         <a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.cid}}">{{ entry.substrate }}</a>
       </td>
       <td>
-        {{ entry.k_cat|stringformat:".2e" }} 
-        &plusmn; 
-        {{ entry.err_k_cat|stringformat:".2e" }}
+        {{ entry.k_cat|stringformat:".2e" }}&nbsp;&plusmn;&nbsp;{{ entry.err_k_cat|stringformat:".2e" }}
       </td>
       <td>
-        {{ entry.K_M|stringformat:".2e" }} 
-        &plusmn; 
-        {{ entry.err_K_M|stringformat:".2e" }}
+        {{ entry.K_M|stringformat:".2e" }}&nbsp;&plusmn;&nbsp;{{ entry.err_K_M|stringformat:".2e" }}
       </td>
       <td>
-        {{ entry.over|stringformat:".2e" }} 
-        &plusmn; 
-        {{ entry.err_over|stringformat:".2e" }}
-      </td>
-      <td>
-        <!-- lane image -->
+        {{ entry.over|stringformat:".2e" }}&nbsp;&plusmn;&nbsp;{{ entry.err_over|stringformat:".2e" }}
       </td>
     </tr>
     {% endfor %}
@@ -74,5 +47,11 @@
   </tfoot>
 </table>
 </div>
+
+<script type='text/javascript' charset='utf8'>
+  $(document).ready( function () {
+      $('#browse').DataTable({paging: false});
+      } );
+</script>
 
 {% endblock %}

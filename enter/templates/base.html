@@ -2,23 +2,26 @@
 <html lang=en>
 	<head>
 		<meta charset=utf8>
+    <title>{% block title %}SEEK - Standardized Engineered Enzyme Kinetics Database{% endblock %}</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'enter/style.css' %}">
-    <title>{% block title %}Enzyme Engineering Portal{% endblock %}</title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.0/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
 	</head>
   <body>
-		<h1>SEEK<br><small>Enzyme Engineering Platform</small>
-    </h1>
+		<h1>SEEK<br><small>Standardized Engineered Enzyme Kinetics Database</small></h1>
 		<nav>
 			<a href="/enter/">Home</a>
-			<a href="/enter/systems">Systems</a>
-      <a href="/enter/help">Help</a>
+			<a href="/enter/systems">Get Started</a>
 			<a href="/enter/browse">Browse</a>
 			<a href="/enter/submit">Submit</a>
+      <a href="/enter/help">Help</a>
 		</nav>
     {% block content %}Default text{% endblock content %}
 		<footer>
-    <p><a href="">The Siegel Lab</a> at the University of California, Davis</p>
+    <p><a href="https://sites.google.com/site/ucdsiegellab/">The Siegel Lab</a> at the University of California, Davis</p>
 		<p>UC Davis Genome Center, 451 Health Sciences Drive, Davis CA 95616</p>
     <p><small>Need help? Email <a href="">help@enzymedb.org</a></small></p>
 		</footer>

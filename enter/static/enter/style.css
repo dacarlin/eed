@@ -32,12 +32,11 @@ div#blue {
 	background: white;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
-	font-family: "Source Serif Pro";
-  font-size: 18px;
-	font-weight: 400;
+	font: normal 18px/26px "Source Serif Pro";
 	padding: 50px 100px;
-	line-height: 196%;
 }
+
+table { width: 100% }
 
 footer {
 	font: normal 16px/20px "Source Serif Pro";
@@ -47,17 +46,20 @@ footer {
   background-size: auto 100%;
 }
 
-footer img { width: 200px; } /* for index page */
+/* for index page */
+
 p#tagline {
-  font: italic 24px/30px "Hoefler Text";
+  font: normal 24px/36px "Source Serif Pro";
   text-align: center;
+  width: 33em;
+  margin: 0 auto;
 }
 
 /* specific to submit view */
 
 form { position: relative; }
 
-label + input, label + select, input {
+label + input, label + select, .submit input {
 	position: absolute;
 	left: 280px;
   font: normal 18px/18px "Source Serif Pro";
@@ -65,10 +67,3 @@ label + input, label + select, input {
 
 hr { border: none; height: 40px; } /* systems */
 
-/* browse view */
-
-table { width: 100%; }
-td { padding: 0 8px; vertical-align: top; }
-thead { font-weight: 900; background: white; }
-tr.units td { font-weight: 100; border-bottom: 4px solid navy; }
-table.browse tbody td { border-bottom: 1px solid navy; }
