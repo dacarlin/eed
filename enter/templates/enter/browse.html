@@ -28,7 +28,7 @@
         {{ entry.mutations }}
       </td>
       <td>
-        <a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.cid}}">{{ entry.substrate }}</a>
+        <small><a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.cid}}">{{ entry.substrate }}</a></small>
       </td>
       <td>
         {{ entry.k_cat|stringformat:".2e" }}&nbsp;&plusmn;&nbsp;{{ entry.err_k_cat|stringformat:".2e" }}
