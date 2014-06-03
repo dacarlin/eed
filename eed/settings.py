@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'enter',
     'django.contrib.formtools',
+    'mod_wsgi.server',
 )
 
 MIDDLEWARE_CLASSES = (
