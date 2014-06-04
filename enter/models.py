@@ -70,8 +70,11 @@ class EntryForm(ModelForm):
 
     # Calculate k_cat/K_M and propagate standard error
     instance.over = instance.k_cat / instance.K_M
-    instance.err_over = instance.err_k_cat / instance.k_cat + \
-                        instance.err_K_M / instance.K_M
+    instance.err_over = ( instance.k_cat / instance.K_M ) * \
+                        ( \
+                        ( instance.err_k_cat / instance.k_cat ) ** 2 + \
+                        ( instance.err_K_M / instance.K_M) ** 2 \
+                        )
 
     if commit:
       instance.save()
