@@ -9,13 +9,13 @@
         <td>EC</td>
         <td>Mutations</td>
         <td>Substrate</td>
-        <td><em>k</em><sub>cat</sub>&nbsp;<small>(1/min)</small></td>
+        <td><em>k</em><sub>cat</sub> <small>(min<sup>&ndash;1</sup>)</small></td>
         <td class="collapse"></td>
         <td><small>Std. Err.</small></td>
-        <td>K<sub>M</sub>&nbsp;<small>(mol/L)</small></td>
+        <td>K<sub>M</sub> <small>(M)</small></td>
         <td class="collapse"></td>
         <td><small>Std. Err.</small></td>
-        <td><em>k</em><sub>cat</sub>/K<sub>M</sub></td>
+        <td><em>k</em><sub>cat</sub>/K<sub>M</sub><br><small>(M<sup>&ndash;1</sup>min<sup>&ndash;1</sup>)</small></td>
         <td class="collapse"></td>
         <td><small>Std. Err.</small></td>
       </tr>
@@ -68,7 +68,8 @@
 <script type='text/javascript' charset='utf8'>
   $(document).ready( function () {
     $('#browse').DataTable({
-      paging: false;
+      paging: false,
+      "columnDefs": [{ "orderable": false, "targets": [5, 8, 11] }]
     });
   });
 </script>
