@@ -54,10 +54,6 @@ thead {
   background: #fbfbfb;
 }
 
-td.collapse {
-
-}
-
 /* for index page */
 
 p#tagline {
@@ -66,6 +62,7 @@ p#tagline {
   width: 33em;
   margin: 0 auto;
 }
+#tagline + p { text-align: center; }
 
 /* specific to submit view */
 
