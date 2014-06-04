@@ -62,7 +62,7 @@ p#tagline {
   width: 33em;
   margin: 0 auto;
 }
-#tagline + p { text-align: center; }
+#tagline + p { text-align: center; width: 33em; margin: 2em auto; }
 
 /* specific to submit view */
 
