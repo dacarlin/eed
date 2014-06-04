@@ -9,15 +9,15 @@
         <td>EC</td>
         <td>Mutations</td>
         <td>Substrate</td>
-        <td><em>k</em><sub>cat</sub>&nbsp;(1/min)</td>
-        <td></td>
-        <td>Error</td>
-        <td>K<sub>M</sub>&nbsp;(mol/L)</td>
-        <td></td>
-        <td>Error</td>
+        <td><em>k</em><sub>cat</sub>&nbsp;<small>(1/min)</small></td>
+        <td class="collapse"></td>
+        <td><small>Std. Err.</small></td>
+        <td>K<sub>M</sub>&nbsp;<small>(mol/L)</small></td>
+        <td class="collapse"></td>
+        <td><small>Std. Err.</small></td>
         <td><em>k</em><sub>cat</sub>/K<sub>M</sub></td>
-        <td></td>
-        <td>Error</td>
+        <td class="collapse"></td>
+        <td><small>Std. Err.</small></td>
       </tr>
     </thead>
 
@@ -65,11 +65,11 @@
     </tfoot>
   </table>
 </div>
-
 <script type='text/javascript' charset='utf8'>
   $(document).ready( function () {
-      $('#browse').DataTable({paging: false});
-      } );
-    </script>
-
-    {% endblock %}
+    $('#browse').DataTable({
+      paging: false;
+    });
+  });
+</script>
+{% endblock %}

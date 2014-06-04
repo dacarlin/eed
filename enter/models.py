@@ -11,7 +11,7 @@ def check_password(password):
 class Entry(models.Model):
   SYSTEMS = ( ("BglB", "Beta-glucosidase B"), ("MDH", "Mannitol dehydrogenase") )
   system      = models.CharField(max_length=80, choices=SYSTEMS)
-  mutations   = models.CharField(max_length=100) 
+  mutations   = models.CharField(max_length=100)
   # for parsing mutations ([a-zA-Z])(\d+)([a-zA-Z)\+*
   yyield      = models.FloatField("Yield (mg/mL)")
   k_cat       = models.FloatField("k_cat (1/min)")
@@ -35,8 +35,8 @@ class Entry(models.Model):
 
 
   def __str__(self):
-    return "Entry " + str(self.id) + " (" + self.system + \
-           ") published " + str(self.pub_date)[:11] 
+    return str(self.mutations) + " (" + self.system + \
+           ") published " + str(self.pub_date)[:11]
 
 class EntryForm(ModelForm):
   class Meta:
@@ -65,9 +65,9 @@ class EntryForm(ModelForm):
       instance.substrate = 'MDH substrate'
       instance.cid = 'mdh substrate'
 
-    # Parse mutations 
+    # Parse mutations
     # Handle space, comma, and plus-delimited lists of one or more
-      
+
     # Calculate k_cat/K_M and propagate standard error
     instance.over = instance.k_cat / instance.K_M
     instance.err_over = instance.err_k_cat / instance.k_cat + \

@@ -6,54 +6,30 @@
 <table>
   <tr>
     <td>
-      <h3>Metadata</h3>
-      <p>Organism: <em>Paenibacillus polymyxa</em></p>
-      <p><a href="http://www.uniprot.org/uniprot/P22073">P22073</a></p>
-      <p><a href="http://www.rcsb.org/pdb/explore/explore.do?structureId=2jie">2JIE</a></p>
-      <p><a href="http://www.brenda-enzymes.info/php/result_flat.php4?ecno=3.2.1.21">3.2.1.21</a></p>
+      <ul>
+        <li>Organism: <em>Paenibacillus polymyxa</em></li>
+        <li>Uniprot: <a href="http://www.uniprot.org/uniprot/P22073">P22073</a></li>
+        <li>PDB: <a href="http://www.rcsb.org/pdb/explore/explore.do?structureId=2jie">2JIE</a></li>
+        <li>EC: <a href="http://www.brenda-enzymes.info/php/result_flat.php4?ecno=3.2.1.21">3.2.1.21</a></li>
     </td>
     <td>
       <h3>Design</h3>
       <p><a href="http://c4c.uwc4c.com/express_license_technologies/foldit">Get Foldit</a></p>
-      <p><a href="http://github.com/"><i class="fa fa-file"></i> Foldit files</a></p>
+      {% load staticfiles %}
+      <p><i class="fa fa-file"></i> <a href="{% static 'enter/blgb_foldit_files.zip' %}">Foldit files</a></p>
     </td>
     <td>
       <h3>Build</h3>
-        <p><a href=""><i class="fa fa-file"></i> Mutagenesis</a></p>
-        <p><a href=""><i class="fa fa-file"></i> Expression and purification</a></p>
+        <p><i class="fa fa-file"></i> <a href="https://drive.google.com/file/d/0B3zIXvOOrmpqbGpVZV9ydW5pSnc/edit?usp=sharing">Mutagenesis</a></p>
+        <p><i class="fa fa-file"></i> <a href="{% static 'enter/bglb_expr_pur.pdf' %}">Expression and purification</a></p>
     </td>
     <td>
       <h3>Test</h3>
-        <p><a href=""><i class="fa fa-file"></i> Assay protocol</a></p>
-        <p><a href="http://github.com/"><i class="fa fa-file"></i> Data analysis tools</a></p>
+        <p><i class="fa fa-file"></i> <a href="{% static 'enter/bglb_expr_pur.pdf' %}">Assay protocol</a></p>
+        <p><i class="fa fa-file"></i> <a href="https://github.com/dacarlin/Michaelis-Menten">Data analysis tools</a></p>
     </td>
   </tr>
 </table>
 <hr>
-<h2>Mannitol dehydrogenase</h2>
-<table>
-  <tr>
-    <td>
-      <h3>Metadata</h3>
-      <p>Uniprot ID: <a href="">P22073</a></p>
-      <p>PDB ID: <a href="">2JIE</a></p>
-    <td>
-      <h3>Design</h3>
-        <p>Foldit can be obtained from <a href="">S. Cooper's page
-            at the University of Washington</a>.</p>
-        <p><a href="">Foldit files for beta-glucosidease B</a></p>
-    </td>
-    <td>
-      <h3>Build</h3>
-        <p>Mutagenesis options</p>
-        <p>Protocols for expression and purification</p>
-    </td>
-    <td>
-      <h3>Test</h3>
-        <p>Protocols for kinetic assays</p>
-        <p>Data analysis tools</p>
-    </td>
-  </tr>
-</table>
 </div>
 {% endblock content %}

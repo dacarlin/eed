@@ -28,6 +28,8 @@ nav a {
 	color: navy;
 }
 
+a { color: navy; }
+
 div#blue {
 	background: white;
   border-top: 1px solid #eee;
@@ -46,6 +48,16 @@ footer {
   background-size: auto 100%;
 }
 
+/* browse view */
+
+thead {
+  background: #fbfbfb;
+}
+
+td.collapse {
+
+}
+
 /* for index page */
 
 p#tagline {
@@ -57,6 +69,8 @@ p#tagline {
 
 /* specific to submit view */
 
+table.submit * td { vertical-align: top; width: 50%; }
+
 form { position: relative; }
 
 label + input, label + select, .submit input {
@@ -66,4 +80,3 @@ label + input, label + select, .submit input {
 }
 
 hr { border: none; height: 40px; } /* systems */
-
