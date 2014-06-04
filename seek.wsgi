@@ -16,8 +16,8 @@ sys.path.insert(0, os.path.join(app_dir, app))
 sys.path.insert(0, app_dir)
 sys.path.insert(0, site_packages)
 
-# get the name of our software, which should be the name of this file
-module = "%s.settings.settings" % app
+# bad hard coding
+module = "eed.settings" 
 os.environ["DJANGO_SETTINGS_MODULE"] = module
 
 from django.core.handlers.wsgi import WSGIHandler
