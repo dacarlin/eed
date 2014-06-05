@@ -14,11 +14,11 @@ h1 {
   padding: 23px;
 }
 
-h1 small { font: normal 24px/24px "Source Serif Pro"; }
+h1 small { font: normal 24px/24px "Source Serif Pro", Times, serif; }
 
 nav {
   text-align: center;
-  font: bold 30px/30px "Source Serif Pro";
+  font: bold 30px/30px "Source Serif Pro", Times, serif;
   margin: 25px 0 50px 0;
 }
 
@@ -34,14 +34,14 @@ div#blue {
 	background: white;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
-	font: normal 18px/26px "Source Serif Pro";
+	font: normal 18px/26px "Source Serif Pro", Times, serif;
 	padding: 50px 100px;
 }
 
 table { width: 100% }
 
 footer {
-	font: normal 16px/20px "Source Serif Pro";
+	font: normal 16px/20px "Source Serif Pro", Times, serif;
 	margin: 50px 100px 50px 100px;
   padding: 50px 0 25px 0;
   background: white url('images/seal.jpg') right top no-repeat;
@@ -57,9 +57,9 @@ thead {
 /* for index page */
 
 p#tagline {
-  font: normal 12/18px "Source Serif Pro";
+  font: normal 12/18px "Source Serif Pro", Times, serif;
   text-align: justify;
-  width: 56em;
+  padding: 0;
   margin: 0 auto;
 }
 #tagline + p { text-align: center; width: 33em; margin: 2em auto; }
@@ -73,7 +73,7 @@ form { position: relative; }
 label + input, label + select, .submit input {
 	position: absolute;
 	left: 280px;
-  font: normal 18px/18px "Source Serif Pro";
+  font: normal 18px/18px "Source Serif Pro", Times, serif;
 }
 
 hr { border: none; height: 40px; } /* systems */
