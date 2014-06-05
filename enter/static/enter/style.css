@@ -2,7 +2,7 @@
 
 body {
 	margin: 0;
-	padding: 0;
+	padding: 0 100px;
 	background: url('images/seek.png') center -190px no-repeat #fff;
   background-size: 1200px;
 }
@@ -36,7 +36,6 @@ div#blue {
   border-bottom: 1px solid #eee;
 	font: normal 18px/26px "Source Serif Pro";
 	padding: 50px 100px;
-	margin: 0 100px;
 }
 
 table { width: 100% }
