@@ -36,6 +36,7 @@ div#blue {
   border-bottom: 1px solid #eee;
 	font: normal 18px/26px "Source Serif Pro";
 	padding: 50px 100px;
+	margin: 0 100px;
 }
 
 table { width: 100% }
