@@ -57,9 +57,9 @@ thead {
 /* for index page */
 
 p#tagline {
-  font: normal 24px/36px "Source Serif Pro";
-  text-align: center;
-  width: 33em;
+  font: normal 12/18px "Source Serif Pro";
+  text-align: justify;
+  width: 56em;
   margin: 0 auto;
 }
 #tagline + p { text-align: center; width: 33em; margin: 2em auto; }
