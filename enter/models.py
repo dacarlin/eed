@@ -57,7 +57,8 @@ class EntryForm(ModelForm):
       instance.substrate = '4-nitrophenyl-beta-D-glucoside'
       instance.cid = '92930'
 
-    # MDH
+    # MDH 1M2W 1.1.1.67 O08355 oh-zero-eight-three-five-five
+    # Substrates: D-mannitol and D-arabitol 
     if instance.system == 'MDH':
       instance.uniprot_ID = 'MDH Uniprot'
       instance.pdb_ID = 'MDH PDB'
