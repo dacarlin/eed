@@ -1,5 +1,5 @@
 """
-Django settings for eed project.
+Django settings for seek project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -49,9 +49,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'eed.urls'
+ROOT_URLCONF = 'seek.urls'
 
-WSGI_APPLICATION = 'eed.wsgi.application'
+WSGI_APPLICATION = 'seek.wsgi.application'
 
 
 # Database
