@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^$', views.index),
     url(r'^browse/', views.browse),
     url(r'^submit/', EntryFormPreview(EntryForm)),
-    url(r'^systems/', views.systems),
+    url(r'^systems/$', views.systems),
     url(r'^success/', views.success),
+    url(r'^systems/bagel/', views.bagel)
 )

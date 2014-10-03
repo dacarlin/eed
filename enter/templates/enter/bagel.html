@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interactive Protocol: Beta-glucosidase</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class=container>
+
+      <script>
+        function updateValues() {
+          var x = document.getElementById("mutants").value;
+          document.getElementById('day1-ecoli').innerHTML = x * 20;
+          document.getElementById('day1-plasmid').innerHTML = x * 1;
+          document.getElementById('day1-tb').innerHTML = x * 200;
+        }
+      </script>
+
+      <h1>Interactive Protocol: Bagel</h1>
+
+      <form action="javascript:updateValues()">
+        <label>Number of mutants</label>
+        <input type=text id=mutants value=1></input>
+        <input type=submit>
+      </form>
+
+      <h2>Day 1: Transform expression cells</h2>
+
+      <h3>Materials</h3>
+
+      <table>
+        <tr class=header>
+          <td>Material</td>
+          <td>Concentration</td>
+          <td>Amount </td>
+        </tr>
+
+        <tr>
+          <td>Chemically-competent Escherichia coli BL21(DE3)</td>
+          <td></td>
+          <td><span id="day1-ecoli"></span> uL</td>
+        </tr>
+        <tr>
+          <td>Expression plasmid </td>
+          <td>> 20 ng/uL</td>
+          <td><span id="day1-plasmid"></span> uL</td>
+        </tr>
+        <tr>
+          <td>Terrific broth</td>
+          <td></td>
+          <td><span id="day1-tb"></span> uL</td>
+        </tr>
+        <tr>
+          <td>LB agar plates with kanamycin</td>
+          <td></td>
+          <td><script>document.write(1 * x)</script></td>
+        </tr>
+        <tr>
+          <td>Sterile beads</td>
+          <td></td>
+          <td><script>document.write(10 * x)</script></td>
+        </tr>
+        <tr>
+          <td>2 mL tube</td>
+          <td></td>
+          <td><script>document.write(1 * x)</script></td>
+        </tr>
+      </table>
+
+      <h3>Method</h3>
+
+      <ol>
+        <li><p>Set tubes on ice and warm up 42 C dry bath </p></li>
+        <li><p>In an ice cold Goog tube, mix 1 µL plasmid and 20 µL competent cells</p></li>
+        <li><p>Incubate at 42 C for 60 seconds</p></li>
+        <li><p>Incubate on ice for 60 seconds</p></li>
+        <li><p>Add 200 µL media and recover at 37 C for 1 hour</p></li>
+        <li><p>Pipet 200 µL recovered cells on to plate, add glass beads,
+        shake, and get rid of beads</p></li>
+        <li><p>Incubate plate overnight at 37 C</p></li>
+      </ol>
+
+      <script>updateValues();</script>
+      <!-- update the page with default value 1 at start -->
+    </div>
+  </body>
+</html>
