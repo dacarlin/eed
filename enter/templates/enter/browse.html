@@ -1,28 +1,46 @@
 {% extends "base.html" %}
-{% block title %}SEEK - Browse{% endblock %}
+{% block active %}class="active"{% endblock %}
+{% block title %}___________________________{% endblock %}
 {% block content %}
-<div id="blue">
-  <table id="browse">
-    <thead>
-      <tr>
-        <td>Enzyme</td>
-        <td>EC</td>
-        <td>Mutations</td>
-        <td>Substrate</td>
-        <td><em>k</em><sub>cat</sub> <small>(min<sup>&ndash;1</sup>)</small></td>
-        <td class="collapse"></td>
-        <td><small>Std. Err.</small></td>
-        <td>K<sub>M</sub> <small>(M)</small></td>
-        <td class="collapse"></td>
-        <td><small>Std. Err.</small></td>
-        <td><em>k</em><sub>cat</sub>/K<sub>M</sub><br><small>(M<sup>&ndash;1</sup>min<sup>&ndash;1</sup>)</small></td>
-        <td class="collapse"></td>
-        <td><small>Std. Err.</small></td>
-      </tr>
-    </thead>
 
-    <tbody>
-      {% for entry in entry_list %}
+<div class="page-header">
+  <h1>Standardized database: kinetic constants</h1>
+  <p class="lead">Michaelis-Menten constants for our model systems</p>
+</div>
+
+{% for entry in entry_list %}
+<div class="row entry">
+  <div class="col-md-3">
+    <h3>BglB <small>{{entry.mutant}}</small></h3>
+    <p><b>Yield</b>: {{entry.yyield}}</p>
+  </div>
+  <div class="col-md-6">
+    <h4><a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.cid}}">
+      {{entry.substrate}}</a></h4>
+    <table>
+      <tr>
+        <td>k<sub><em>cat</em></sub> </td>
+        <td>{{entry.kcat|stringformat:"1.0e"}} sec<sup>&ndash;1</sup>
+          &plusmn; {{entry.err1|stringformat:"1.0e"}}</li></td>
+      </tr>
+      <tr>
+        <td>K<sub><em>M</em></sub></td>
+        <td>{{entry.km|stringformat:"1.0e"}} M &plusmn;
+          {{entry.err2|stringformat:"1.0e"}}</li></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-3">
+    <ul>
+      <li><a href="">Download PDB</a></li>
+      <li><a href="">Download raw data</a></li>
+    </ul>
+  </div>
+</div>
+<hr>
+
+{% endfor %}
+<!--
       <tr>
         <td title="UniProt {{ entry.uniprot_ID }}, PDB {{ entry.pdb_ID }}">
           <a href="/enter/systems/">{{ entry.system }}</a>
@@ -58,20 +76,7 @@
           {{ entry.err_over|stringformat:".2e" }}
         </td>
       </tr>
-      {% endfor %}
-    </tbody>
 
-    <tfoot>
-    </tfoot>
-  </table>
-</div>
-<script type='text/javascript' charset='utf8'>
-  $(document).ready( function () {
-    $('#browse').DataTable({
-      paging: false,
-      "columnDefs": [{ "orderable": false, "targets": [5, 8, 11] }],
-      responsive: true,
-    });
-  });
-</script>
+    </tbody> -->
+
 {% endblock %}

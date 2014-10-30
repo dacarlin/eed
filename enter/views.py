@@ -17,12 +17,6 @@ def help(request):
 def systems(request):
   return render(request, 'enter/systems.html')
 
-def bagel(request):
-  return render(request, 'enter/bagel.html')
-
-def submit(request):
-  return render(request, 'enter/submit.html')
-
 def success(request):
   entry_list = Entry.objects.all().order_by('-pub_date')
   return render(request, 'enter/browse.html', {'entry_list': entry_list})

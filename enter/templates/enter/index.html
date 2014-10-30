@@ -1,19 +1,50 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="blue">
-  <p id="tagline">
-    <small><strong>WARNING:  THIS IS A BETA RELEASE OF SEEK.  WHILE DATA AND METHODS SHOULD BE RELIABLE, FORMATTING CHANGES WILL BE HAPPENING.  PLEASE DON’T HESITATE TO <a href="">CONTACT US</a> ABOUT QUESTIONS/CONCERNS/COMMENTS</strong></small>
-    <br><br>
-    SEEK is an open online resource to enable researchers and students to get jump-started in the field of computational enzyme engineering.  In addition, SEEK aims to be a repository for the worlds largest data sets of kinetic constants from engineered enzymes produced, purified, and kinetically characterized using standardized methods. Using the robust and simple methods provided in SEEK, researchers and students can rapidly and reliably carry out &ldquo;design-build-test-learn&rdquo; enzyme engineering cycles on a set of standardized enzymes. By using standardized methods we can generate large, high quality, data sets correlating changes in sequence and structure to measured enzyme kinetic constants.  These data sets will further our understanding of the sequence, structure, function relationship in enzymes, and can be used for the development of computational enzyme engineering tools.
-    <br><br>
 
-We encourage you to explore the kinetic constants of the engineered enzymes, use the compiled data in your own research, or even follow the methods to engineer your own enzymes and submit the resulting data back to SEEK.  Enjoy!
-  </p>
-
-  <p>
-Publication is coming soon.  For now, please cite:
-Carlin DA, Beaumont N, Boeger T, Lucas JE, Ryklansky C, Whithaus L, Siegel JB. The Standardized Engineered Enzyme Knowledgebase.  manuscript in preparation.
-
-  </p>
+<div class="row">
+  <div class="col-md-12">
+    <h1><small>The</small> <br>
+      Standardized<br>
+      Enzyme<br>
+      Engineering<br>
+      Knowledgebase<br></h1>
+      <hr>
+  </div>
 </div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h2>Introduction</h2>
+
+    <p>SEEK is an open online resource to enable researchers and students to get
+      jump-started in the field of computational enzyme engineering.  In addition,
+      SEEK aims to be a repository for the worlds largest data sets of kinetic
+      constants from engineered enzymes produced, purified, and kinetically
+      characterized using standardized methods. Using the robust and simple methods
+      provided in SEEK, researchers and students can rapidly and reliably carry out
+      &ldquo;design-build-test-learn&rdquo; enzyme engineering cycles on a set of
+      standardized enzymes. By using standardized methods we can generate large,
+      high quality, data sets correlating changes in sequence and structure to
+      measured enzyme kinetic constants.  These data sets will further our
+      understanding of the sequence, structure, function relationship in enzymes,
+      and can be used for the development of computational enzyme engineering tools.</p>
+
+    <p>We encourage you to explore the kinetic constants of the engineered enzymes,
+      use the compiled data in your own research, or even follow the methods to
+      engineer your own enzymes and submit the resulting data back to SEEK.
+      </p>
+  </div>
+  <div class="col-md-4">
+    <blockquote>
+      <h4>SEEK Beta 2</h4>
+      <p>Fair warning: this is a beta release of SEEK. While data and methods
+        should be reliable, count on things changing as we continue building
+        the platform!
+        Please <a href="mailto:">email us</a> with any questions, concerns, or comments.
+        <em>&mdash; The SEEK Team</em>
+      </p>
+    </blockquote>
+  </div>
+</div>
+
 {% endblock %}

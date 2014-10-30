@@ -1,37 +1,113 @@
 {% extends "base.html" %}
-{% block title %}SEEK - Materials &amp; Methods{% endblock title %}
+{% block title %}SEEK - Materials and methods: &beta-glucosidase B{% endblock title %}
 {% block content %}
-<div id="blue">
-<h2>Beta-glucosidase&nbsp;B</h2>
-<table>
-  <tr>
-    <td>
-      <ul>
-        <li>Addgene: <a href="https://www.addgene.org/browse/article/8557/">BglB in pET29b(+)</a></li>
-        <li>Organism: <em>Paenibacillus polymyxa</em></li>
-        <li>Uniprot: <a href="http://www.uniprot.org/uniprot/P22505">P22505</a></li>
-        <li>PDB: <a href="http://www.rcsb.org/pdb/explore/explore.do?structureId=2jie">2JIE</a></li>
-        <li>EC: <a href="http://www.brenda-enzymes.info/php/result_flat.php4?ecno=3.2.1.21">3.2.1.21</a></li>
-    </td>
-    <td>
-      <h3>Design</h3>
-      <p><a href="mailto:siegel.lab.ucd@gmail.com">Email us for the latest version of Foldit</a></p>
-      {% load staticfiles %}
-      <p><i class="fa fa-file"></i> <a href="https://github.com/dacarlin/bagel-foldit/archive/master.zip">Foldit files</a></p>
-    </td>
-    <td>
-      <h3>Build</h3>
-      <p>Option A: <a href="https://www.transcriptic.com">Transcriptic</a> (Attn: Yin He)</p>
-        <p>Option B: <i class="fa fa-file"></i> <a href="https://drive.google.com/file/d/0B3zIXvOOrmpqbGpVZV9ydW5pSnc/edit?usp=sharing">Mutagenesis protocol</a></p>
-        <p><i class="fa fa-file"></i> <a href="{% static 'enter/bglb_expr_pur.pdf' %}">Expression and purification</a></p>
-    </td>
-    <td>
-      <h3>Test ()</h3>
-        <p><i class="fa fa-file"></i> <a href="{% static 'enter/bglb_expr_pur.pdf' %}">Assay protocol</a></p>
-        <p><i class="fa fa-file"></i> <a href="https://github.com/dacarlin/Michaelis-Menten">Data analysis tools</a></p>
-    </td>
-  </tr>
-</table>
-<hr>
+
+<div class="page-header">
+  <h1>Materials and methods: &beta;-glucosidase B</h1>
+  <p class="lead">Complete interactive protocol to get started with enzyme engineering</p>
 </div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h2>Introduction</h2>
+
+    <p>This page is an interactive protocol designed to be used by anyone equipped with
+      basic lab equipment. Look over the prerequisites at right to decide if you're
+      ready to get started.</p>
+  </div>
+  <div class="col-md-4">
+    <h3>Prerequisites</h3>
+    <ul>
+      <li>Centrifuge capable of xyz RPM</li>
+      <li>Shaking incubator</li>
+      <li>Computer to run Foldit</li>
+      <li>...</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <hr>
+      <h2>Design: using Foldit to make mutations</h2>
+
+      <p>In this step, you will obtain Foldit, a program for designing proteins,
+        load in a model of &beta;-glucosidase B, and make mutations.</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <h3>Hardware</h3>
+    <ul>
+      <li>Mac or Windows computer capable of running Foldit</li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <h3>Software</h3>
+    <ul>
+      <li>Foldit (for now, please email us for a license)</li>
+      <li>Macromolecular model of &beta;-glucosidase B</li>
+      <ul>
+        <li>Protein Data Bank structure of &beta;-glucosidase B</li>
+        <li>Foldit parameters file for 4-nitrophenylglucopyranoside</li>
+        <li>Conformers for 4-nitrophenylglucopyranoside</li>
+        <li>Foldit constraint file</li>
+      </ul>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8">
+    <h3>Instructions</h3>
+    <ol>
+      <li>Download and install Foldit</li>
+      <li>Load in the four files comprising the molecular model</li>
+      <li>Make your mutations (see <b>cheat sheet</b>)</li>
+    </ol>
+  </div>
+
+  <div class="col-md-4">
+    <h3>Foldit design cheat sheet</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <hr>
+      <h2>Build: making and purifying mutants</h2>
+      <p>In this step, you will take the genetic constructs from the first step,
+        express them in a model organism, and purify your mutant proteins for
+        testing in the next step.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <hr>
+      <h2>Test: determine kinetic constants</h2>
+
+      <p>In this step, you will use a spectrophotometer to determine the kinetic
+        constants of your mutants. You will find out how the hypotheses you made
+        in the first step translate into experimental findings.</p>
+
+      <ol>
+        <li>Record the rate you observe at each substrate concentration. Use units
+          of <b>M</b> (mol/L) for the concentrations and units of <b>M/s</b> for the rates.</p>
+
+          <p>You can paste in a CSV file to the text box below or try the example</p>
+
+          {% if form.errors %}
+          <h2><b>Whoops</b>! These look wrong:</h2>
+          {% else %}{% endif %}
+          <form enctype="multipart/form-data" method="post" action="/get-started/">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="hidden" name="{{ stage_field }}" value="1" />
+            <p><input type="submit" value="Calculate constants" /></p>
+          </form>
+        </li>
+      </ol>
+  </div>
+</div>
+
 {% endblock content %}

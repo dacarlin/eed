@@ -1,0 +1,9 @@
+p { font-family: ""; }
+
+h1 {
+  /* background: url('ray.png') 50% bottom no-repeat; */
+  background: url('blob.png') right center no-repeat;
+  background-size: contain;
+}
+
+div.entry div table tr td { padding-right: 10px; }

@@ -11,8 +11,6 @@ urlpatterns = patterns('',
     url(r'^help/', views.help),
     url(r'^$', views.index),
     url(r'^browse/', views.browse),
-    url(r'^submit/', EntryFormPreview(EntryForm)),
-    url(r'^systems/$', views.systems),
+    url(r'^get-started/$', EntryFormPreview(EntryForm)),
     url(r'^success/', views.success),
-    url(r'^systems/bagel/', views.bagel)
-)
+    )
