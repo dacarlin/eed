@@ -129,10 +129,10 @@ def check_password(password):
     raise ValidationError("Please enter the password to submit")
 
 class EntryFormPreview(FormPreview):
-  preview_template = 'enter/preview.html'
+  preview_template = 'enter/browse.html'
   form_template = 'enter/systems.html'
 
   def done(self, request, cleaned_data):
     f = EntryForm(request.POST)
-    f.save()
+    f.save(commit=False)
     return HttpResponseRedirect('/success')
