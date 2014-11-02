@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% block active %}class="active"{% endblock %}
-{% block title %}___________________________{% endblock %}
+
+{% block title %}SEEK: Browse kinetic constants{% endblock %}
 {% block content %}
 
 <div class="page-header">
@@ -8,16 +8,16 @@
   <p class="lead">Michaelis-Menten constants for our model systems</p>
 </div>
 
-{% for entry in entry_list %}
+{% for entry in entry_list %} 
 <div class="row entry">
   <div class="col-md-3">
     <h3>BglB <small>{{entry.mutant}}</small></h3>
-    <p><b>Yield</b>: {{entry.yyield}}</p>
-    <p>{{ entry.pub_date }}</p>
+    <p><b>Yield</b>: {{entry.yyield}} </p>
+    <p> </p>
   </div>
   <div class="col-md-6">
     <h4><a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.cid}}">
-      {{entry.substrate}}</a></h4>
+       {{entry.substrate}}</a></h4>
     <table>
       <tr>
         <td>k<sub><em>cat</em></sub> </td>
@@ -35,15 +35,16 @@
     <ul>
       <li><a href="">Download PDB</a></li>
       <li><a href="">Download raw data</a></li>
-      <li><p>Raw results:</p>
-        <p>{{entry.results}}</p>
-      </li>
+      <li></li>
     </ul>
   </div>
 </div>
+<pre>{{entry.csv}}</pre>
 <hr>
 
-{% endfor %}
+{%endfor%}
+
+
 <!--
       <tr>
         <td title="UniProt {{ entry.uniprot_ID }}, PDB {{ entry.pdb_ID }}">

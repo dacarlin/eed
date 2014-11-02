@@ -1,6 +1,6 @@
 from django.contrib import admin
-from enter.models import Entry
+from enter.models import DataEntry
 
-admin.site.register(Entry)
+admin.site.register(DataEntry)
 
 # Register your models here.

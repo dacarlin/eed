@@ -5,19 +5,21 @@
 
 <div class="page-header">
   <h1>Results!</h1>
-  <p class="lead">Your results (<em>finally</em>)</p>
+  <p class="lead"><a href="">Download as CSV</a></p>
 </div>
 
-{% for key, value in analyses.items %}
+{% for sample, value in analyses.items %}
 <div class="row">
   <div class="col-md-4">
-    <h2>{{key}}</h2>
+    <h2>{{sample}}</h2>
   </div>
   <div class="col-md-4">
     <p>k<sub><em>cat</em></sub>: {{value.kcat|stringformat:"1.0e"}} sec<sup>&ndash;1</sup>
-        &plusmn; {{value.err1|stringformat:"1.0e"}}</p>
-    <p>K<sub><em>M</em></sub>: {{value.km|stringformat:"1.0e"}} M &plusmn;
-        {{value.err2|stringformat:"1.0e"}}</p>
+      &plusmn; {{value.err1|stringformat:"1.0e"}}</p>
+    <p>K<sub><em>M</em></sub>: {{value.km|stringformat:"1.0e"}} M 
+      &plusmn; {{value.err2|stringformat:"1.0e"}}</p>
+    <p>Efficiency: {{value.eff|stringformat:"1.0e"}}
+      &plusmn; {{value.err3|stringformat:"1.0e"}} </p>
   </div>
   <div class="col-md-4">
     <img width=200 height=200 src="data:image/png;base64,{{ value.linear_plot }}"/>
@@ -25,4 +27,13 @@
 </div>
 <hr>
 {% endfor %}
+
+<form action="/thanks/" method="post">
+  {% csrf_token %}
+  {% for field in form %}
+    {{ field.as_hidden }} 
+  {% endfor %}
+  <p><input style="left: 400px" type="submit" value="Submit" /></p>
+</form>
+
 {%endblock %}
