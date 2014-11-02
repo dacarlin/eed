@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}SEEK - Materials and methods: &beta-glucosidase B{% endblock title %}
+{% block title %}SEEK - Materials and methods: &beta;-glucosidase B{% endblock title %}
 {% block content %}
 
 <div class="page-header">
@@ -96,15 +96,19 @@
 
           <p>You can paste in a CSV file to the text box below or try the example</p>
 
-          {% if form.errors %}
-          <h2><b>Whoops</b>! These look wrong:</h2>
-          {% else %}{% endif %}
-          <form enctype="multipart/form-data" method="post" action=".">
+          <form action="." method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <input type="submit" value="Get constants!">
+          </form>
+
+          <!-- ><form enctype="multipart/form-data" method="post" action=".">
             {% csrf_token %}
             {{ form.as_p }}
             <input type="hidden" name="{{ stage_field }}" value="1" />
             <p><input type="submit" value="Calculate constants" /></p>
-          </form>
+          </form> -->
+            
         </li>
       </ol>
   </div>
