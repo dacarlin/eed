@@ -18,10 +18,11 @@
   <div class="col-md-4">
     <h3>Prerequisites</h3>
     <ul>
-      <li>Centrifuge capable of xyz RPM</li>
+      <li>Centrifuge capable of holding 50 mL Falcon tubes</li>
+      <li>Thermal cycler or dry bath </li>
       <li>Shaking incubator</li>
       <li>Computer to run Foldit</li>
-      <li>...</li>
+
     </ul>
   </div>
 </div>
@@ -46,7 +47,7 @@
     <h3>Software</h3>
     <ul>
       <li>Foldit (for now, please email us for a license)</li>
-      <li>Macromolecular model of &beta;-glucosidase B</li>
+      <li><a href="">Macromolecular model of &beta;-glucosidase B</a></li>
       <ul>
         <li>Protein Data Bank structure of &beta;-glucosidase B</li>
         <li>Foldit parameters file for 4-nitrophenylglucopyranoside</li>
@@ -63,11 +64,14 @@
       <li>Download and install Foldit</li>
       <li>Load in the four files comprising the molecular model</li>
       <li>Make your mutations (see <b>cheat sheet</b>)</li>
+      <li>(<b>Optional</b>: save a PDB of your mutant)</li>
+      <li>Write down the mutant and your hypothesis</li>
     </ol>
   </div>
 
   <div class="col-md-4">
-    <h3>Foldit design cheat sheet</p>
+    <h3>Foldit design cheat sheet</h3>
+
   </div>
 </div>
 
@@ -80,6 +84,163 @@
         testing in the next step.</p>
   </div>
 </div>
+
+<h3>Day 1: Transform expression cells </h3>
+
+<div class="row">
+  <div class="col-md-6">
+    <h4>Hardware</h4>
+    <ul>
+      <li>Dry bath pre-warmed to 42 C</li>
+      <li>Ice in ice bucket</li>
+      <li>Pipets: 2 and 20 and 200 and tips</li>
+    </ul>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Software</h4>
+    <table>
+      <tr class="header">
+        <td></td>
+        <td>Concentration</td>
+        <td>Amount per sample</td>
+      
+      </tr>
+      <tr>
+        <td>2 mL tube</td>
+        <td></td>
+        <td>1</td>
+      <tr>
+      <tr>
+        <td>Chemically-competent <em>E. coli</em> BLR</td>
+        <td></td>
+        <td>20 &mu;L</td>
+      <tr>
+      <tr>
+        <td>Plasmid</td>
+        <td>>20 ng/&mu;L</td>
+        <td>2 &mu;L</td>
+      <tr>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-9">
+    <h4>Instructions</h4>
+    <ol>
+      <li>In an ice cold Goog tube, mix 1 µL plasmid and 20 µL competent cells</li>
+      <li>Incubate on ice for 10 minutes </li>
+      <li>Incubate at 42 C for 60 seconds</li>
+      <li>Incubate on ice for 60 seconds</li>
+      <li>Add 200 µL media and recover at 37 C for 1 hour</li>
+      <li>Pipet 200 µL recovered cells on to plate, add glass beads, shake, 
+        and get rid of beads</li>
+      <li>Incubate plate overnight at 37 C</li>
+    </ol>
+  </div>
+  <div class="col-md-3">
+    <video controls muted>
+      <source src="/static/Video.MOV">
+    </video>
+  </div>
+</div>
+
+<h3>Day 2: Growth cultures </h3>
+
+<div class="row">
+  <div class="col-md-6">
+    <h4>Hardware</h4>
+    <ul>
+      <li></li>
+    </ul>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Software</h4>
+    <ul>
+      <li></li>
+    </ul>
+  </div>
+</div>
+
+<h4>Instructions </h4>
+
+<ol>
+  <li></li>
+</ol>
+
+<h3>Day 3: Expression cultures </h3>
+
+<div class="row">
+  <div class="col-md-6">
+    <h4>Hardware</h4>
+    <ul>
+      <li></li>
+    </ul>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Software</h4>
+    <ul>
+      <li></li>
+    </ul>
+  </div>
+</div>
+
+<h4>Instructions </h4>
+
+<ol>
+  <li></li>
+</ol>
+
+<h3>Day 4: Purification </h3>
+
+<div class="row">
+  <div class="col-md-6">
+    <h4>Hardware</h4>
+    <ul>
+      <li></li>
+    </ul>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Software</h4>
+    <ul>
+      <li></li>
+    </ul>
+  </div>
+</div>
+
+<h4>Instructions </h4>
+
+<ol>
+  <li></li>
+</ol>
+
+<h3>Day 5: Assay </h3>
+
+<div class="row">
+  <div class="col-md-6">
+    <h4>Hardware</h4>
+    <ul>
+      <li></li>
+    </ul>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Software</h4>
+    <ul>
+      <li></li>
+    </ul>
+  </div>
+</div>
+
+<h4>Instructions </h4>
+
+<ol>
+  <li></li>
+</ol>
 
 <div class="row">
   <div class="col-lg-12">
@@ -101,7 +262,7 @@
               {{ form.as_p }}
               <input type="submit" value="Get constants!">
           </form>
-            
+
         </li>
       </ol>
   </div>

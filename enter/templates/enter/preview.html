@@ -16,13 +16,15 @@
   <div class="col-md-4">
     <p>k<sub><em>cat</em></sub>: {{value.kcat|stringformat:"1.0e"}} sec<sup>&ndash;1</sup>
       &plusmn; {{value.err1|stringformat:"1.0e"}}</p>
-    <p>K<sub><em>M</em></sub>: {{value.km|stringformat:"1.0e"}} M 
+    <p>K<sub><em>M</em></sub>: {{value.km|stringformat:"1.0e"}} M
       &plusmn; {{value.err2|stringformat:"1.0e"}}</p>
     <p>Efficiency: {{value.eff|stringformat:"1.0e"}}
       &plusmn; {{value.err3|stringformat:"1.0e"}} </p>
   </div>
   <div class="col-md-4">
-    <img width=200 height=200 src="data:image/png;base64,{{ value.linear_plot }}"/>
+    <a href="data:image/png;base64,{{ value.linear_plot }}">
+      <img style="width:100%;" src="data:image/png;base64,{{ value.linear_plot }}"/>
+    </a>
   </div>
 </div>
 <hr>
@@ -31,9 +33,9 @@
 <form action="/thanks/" method="post">
   {% csrf_token %}
   {% for field in form %}
-    {{ field.as_hidden }} 
+    {{ field.as_hidden }}
   {% endfor %}
-  <p><input style="left: 400px" type="submit" value="Submit" /></p>
+  <p><input type="submit" value="Submit to SEEK" /></p>
 </form>
 
 {%endblock %}

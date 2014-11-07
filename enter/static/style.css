@@ -7,3 +7,9 @@ h1 {
 }
 
 div.entry div table tr td { padding-right: 10px; }
+
+video { width: 100%; }
+
+table { border: 1px solid #eee; margin-bottom: 2em; }
+table tr { border-bottom: 1px solid #eee; }
+table td { border}
