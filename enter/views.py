@@ -9,6 +9,11 @@ def adam(request):
     form = DataEntryForm(request.POST)
     if form.is_valid():
       analyses = form.process()
+      print(analyses)
+      for sample in analyses.keys():
+        for thing in analyses[sample].keys():
+          print(analyses[sample][thing])
+        print(sample)
       return render(request, 'enter/preview.html', { 'analyses': analyses, 'form': form, } )
     else:
       return render(request, 'enter/cookbook.html', { 'form': form, } )

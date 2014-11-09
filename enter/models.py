@@ -60,8 +60,8 @@ class DataEntryForm(ModelForm):
       plt.scatter(data['S'], data['kobs'])
       plt.savefig(stream, format='png')
       stream.seek(0)
-      linear_plot = base64.b64encode(stream.read())
-      mm_plot = base64.b64encode(stream.read())
+      linear_plot = ''#base64.b64encode(stream.read())
+      mm_plot = ''#base64.b64encode(stream.read())
 
       return { 'kcat': kcat, 'err1': err1, 'km': km, 'err2': err2, 'eff': eff, 'err3': err3,
         'linear_plot': linear_plot, 'mm_plot': mm_plot }
