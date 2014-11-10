@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.http import HttpResponseRedirect
 from django.contrib import admin
-from enter import views
+from app import views
 
 admin.autodiscover()
 
