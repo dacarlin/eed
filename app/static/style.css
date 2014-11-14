@@ -13,3 +13,6 @@ video { width: 100%; }
 table { border: 1px solid #eee; margin-bottom: 2em; }
 table tr { border-bottom: 1px solid #eee; }
 table td { border}
+
+form.analysis textarea { width: 100%;}
+form.analysis label { display: none; }

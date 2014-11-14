@@ -21,27 +21,19 @@ def thanks(request):
     form = DataEntryForm(request.POST)
     if form.is_valid():
       analyses = form.process()
-      
       for sample in analyses.keys():
         entry = Entry()
-        entry.sys = 'BglB'
         entry.mutant = sample
-        entry._yield = 1
-        entry.substrate = '4-nitro'
-        entry.cid = '92930'
         entry.__dict__.update(analyses[sample])
-        entry.save()
-      
+        entry.save()      
       return render(request, 'app/thanks.html', { 'analyses': analyses, 'form': form, } )
-    
     else:
       return render(request, 'app/error.html', { 'form': form, } )
-  
   else:
     return redirect(index)
 
 def browse(request):
-  entry_list = Entry.objects.all()
+  entry_list = Entry.objects.all().order_by('-date')
   return render(request, 'app/browse.html', {'entry_list': entry_list })
 
 def index(request):
