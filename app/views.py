@@ -25,6 +25,10 @@ def thanks(request):
       for sample in analyses.keys():
         entry = Entry()
         entry.sys = 'BglB'
+        entry.mutant = sample
+        entry._yield = 1
+        entry.substrate = '4-nitro'
+        entry.cid = '92930'
         entry.__dict__.update(analyses[sample])
         entry.save()
       

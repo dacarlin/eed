@@ -9,60 +9,68 @@
 </div>
 
 <div class="row head">
-  <div class="col-md-1">
-    <h4></h4>
+  <div class="col-md-2">
+    <h4>System <small>Mutant</small></h4>
   </div>
+
   <div class="col-md-3">
-    <h4>System and sample</h4>
+    <h4>Substrate</h4>
   </div>
-  <div class="col-md-5">
-    <h4>Kinetic constants</h4>
+
+  <div class="col-md-2">
+    <h4>k<sub><em>cat</em></sub> (sec<sup>&ndash;1</sup>)</h4>
   </div>
-  <div class="col-md-3">
-    <h4>Raw data and PDB</h4>
+  
+  <div class="col-md-2">
+    <h4>K<sub><em>M</em></sub> (M)</h4>
   </div>
-</div>
+  
+  <div class="col-md-2">
+    <h4>Efficiency (M/sec)</h4>
+  </div>
+  
+  <div class="col-sm-1">
+    <h4><b>+</b></h4>
+  </div>
+</div> <!-- ends div.head -->
 
 {% for entry in entry_list %} 
 <div class="row entry">
-  <div class="col-sm-1">
-    <button type="button" class="btn btn-danger" data-toggle="collapse" 
-      data-target="id_{{entry.id}}" aria-expanded="false">
-      <b>>></b>
-    </button>
+  
+  <div class="col-md-2">
+    <p><b>BglB</b> <small>{{entry.mutant}}</small></p>
   </div>
+  
   <div class="col-md-3">
-    <h3>BglB <small>{{entry.mutant}}</small></h3>
+    <p><a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.cid}}">
+       {{entry.substrate}}</a></p>
   </div>
-  <div class="col-md-5">
-    <h4><a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.cid}}">
-       {{entry.substrate}}</a></h4>
-    <table>
-      <tr>
-        <td>k<sub><em>cat</em></sub> </td>
-        <td>{{entry.kcat|stringformat:"1.0e"}} sec<sup>&ndash;1</sup>
-          &plusmn; {{entry.err1|stringformat:"1.0e"}}</li></td>
-      </tr>
-      <tr>
-        <td>K<sub><em>M</em></sub></td>
-        <td>{{entry.km|stringformat:"1.0e"}} M &plusmn;
-          {{entry.err2|stringformat:"1.0e"}}</li></td>
-      </tr>
-    </table>
+
+  <div class="col-md-2">
+    <p>{{entry.kcat|stringformat:"1.0e"}} &plusmn; {{entry.err1|stringformat:"1.0e"}}</p>
   </div>
-  <div class="col-md-3">
+
+  <div class="col-md-2">
+    <p>{{entry.km|stringformat:"1.0e"}} &plusmn; {{entry.err2|stringformat:"1.0e"}}</p>
+  </div>
+
+  <div class="col-md-2">
+    <p>{{entry.eff|stringformat:"1.0e"}} &plusmn; {{entry.err3|stringformat:"1.0e"}}</p>
+  </div>
+
+  <div class="col-md-1">
+    <p>
   </div>
 </div>
-<div class="row" id="id_{{entry.id}}">
-  <div class="col-lg-12">
-    <ul>
-      <li><a href="">Download PDB</a></li>
-      <li><a href="">Download raw data</a></li>
-      <li><code>{{entry.raw}}</code></li>
-    </ul>
+  
+<div class="row meta" id="id_{{entry.id}}">
+  <div class="col-lg-12" style="display:none">
+  	<p>Published {{entry.date}}</p>
+    <p>Protein yield {{entry.yyield}} mg/mL</p>  
+    <p><a href="">Download PDB</a></p>
+    <p><a href="">Download raw data</a></p>
   </div>
 </div>
-<hr>
 
 {%endfor%}
 {% endblock %}
