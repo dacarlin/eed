@@ -26,9 +26,9 @@
 	</ul>
   </div>
   <div class="col-md-4">
-    <h2>Prerequisites</h2>
+    <h2>Hardware</h2>
     <ul>
-      <li>Centrifuge capable of holding 50 mL Falcon tubes</li>
+      <li>Centrifuge</li>
       <li>Thermal cycler or dry bath </li>
       <li>Shaking incubator</li>
       <li>Computer to run Foldit</li>
@@ -41,49 +41,107 @@
   <div class="col-lg-12">
     <hr>
       <h2>Design: using Foldit to make mutations</h2>
-
       <p class="lead">In this step, you will obtain Foldit, a program for designing proteins,
         load in a model of &beta;-glucosidase B, and make mutations.</p>
   </div>
 </div>
+
 <div class="row">
-  <div class="col-md-6">
-    <h3>Hardware</h3>
+  <div class="col-md-5">
+    <h3>Important basics</h3>
+    <h4>Load your protein</h4>
+
+    <p>Start &rarr; Intro Puzzles &rarr; Level 1-1 &rarr; Intro Puzzle</p> 
+    <p>Once the intro puzzle has loaded hit: </p>
+    <p>Ctrl-Alt-Shift-A</p>
+
+    <p>Select all four files: </p>
+
+      <dl>
+        <dt>bagel.pdb</dt>
+        <dd>Protein Data Bank structure of &beta;-glucosidase B</dd>
+        <dt>cid92930.params</dt>
+        <dd>Foldit parameters file for 4-nitrophenylglucopyranoside</dd>
+        <dt>cid92930.conf.pdb</dt>
+        <dd>Conformers for 4-nitrophenylglucopyranoside</dd>
+        <dt>cid92930.enzdes.cst</dt>
+        <dd>Foldit constraint file</dd>
+      </dl>
+
+    <h4>Use the advanced design interface</h3>
+    <p>Enable the following options for best experience:</p>
     <ul>
-      <li>Mac or Windows computer capable of running Foldit</li>
+      <li>Menu --> Selection Interface</li>
+      <li>Menu --> General Options --> Show Advanced GUI</li>
+      <li>Menu --> View Options 
+        <ul>
+          <li>Cartoon Thin</li>
+          <li>Score/Hydro+CPK</li>
+        </ul>
+      </li>
     </ul>
+    
+    <h4>Save your protein</h4>
+    <p>Ctrl-Alt-Shift-S</p>
+
+    <h4>Residue energy</h4>
+    <p>Mouse over residue so it is highlighted and hit Tab</p>
   </div>
-  <div class="col-md-6">
-    <h3>Software</h3>
+  <div class="col-md-7">
+    <video controls muted>
+      <source src="/static/start-foldit.mp4">
+    </video>
+    
+    <h3>Commands reference </h3>
+    <h4>Viewing</h4>
     <ul>
-      <li>Foldit (for now, please email us for a license)</li>
-      <li><a href="">Macromolecular model of &beta;-glucosidase B</a></li>
-      <ul>
-        <li>Protein Data Bank structure of &beta;-glucosidase B</li>
-        <li>Foldit parameters file for 4-nitrophenylglucopyranoside</li>
-        <li>Conformers for 4-nitrophenylglucopyranoside</li>
-        <li>Foldit constraint file</li>
-      </ul>
+      <li><p>Zoom to Area of Interest: Mouse over residue of interest so it is highlighted;  hit Shift-Q  (no click) I often move around until I see the ligand and then do this</p></li>
+      <li><p>BackShading:  Ctrl-Shift-Click (on black backdrop) and drag</p></li>
+      <li><p>Front Clipping:  Ctrl-Alt-Click (on black backdrop) and drag</p></li>
+      <li><p>Measuring:  Mouse over atom1 of interest, hit Ctrl-Alt-Shift-C (no click), repeat for atom 2 (reports distance), atom 3 (angle), and atom 4 (dihedral)</p></li>
     </ul>
+
+    <h4>Selecting</h4>
+    <ul>
+      <li><p>See upper left corner of Foldit</p></li>
+      <li><p>SphereAround:  Ctrl-Shift-Click on residue and drag. </p></li>
+    </ul>
+
+    <h4>Design</h4>
+    <ul>
+    <li>Click residue and hit mutate (m).  Selecting a subset of residues (lower right boxes) can be used to do directed designs.  This selection will be used in both mutate AND shake (i.e. shake now mutates those residues while everything else stays native).</li>
+    </ul>
+    
+    <h4>Terminal </h4>
+    <ul>
+    <li>(Main --> Script Terminal)</li>
+    <li>Select specific residue:  selection.Select(<res#>)</li>
+    <li>Zoom to specific residue:  ui.CenterViewport(<res#>)</li>
+    </ul>    
   </div>
 </div>
-<div class="row">
-  <div class="col-md-8">
-    <h3>Instructions</h3>
-    <ol>
-      <li>Download and install Foldit</li>
-      <li>Load in the four files comprising the molecular model</li>
-      <li>Make your mutations (see <b>cheat sheet</b>)</li>
-      <li>(<b>Optional</b>: save a PDB of your mutant)</li>
-      <li>Write down the mutant and your hypothesis</li>
-    </ol>
-  </div>
 
-  <div class="col-md-4">
-    <h3>Foldit design cheat sheet</h3>
+<h2>Rules of Thumb</h2>
 
-  </div>
-</div>
+<ul>
+<li>NEVER WIGGLE (W) without selecting a sub-selection. </li>
+<li>Sometimes high energies (mutations/conformations) are need to get to the low energy.</li>
+<li>Importance of score is in order as it appears in the Tab menu</li>
+<li>Native or close to native is generally better</li>
+<li>Manually force the interaction you want and then side-chain wiggle (E) those residues and the ones around it</li>
+<li>General order of operations:  E --> S --> E</li>
+<li>If score is not dropping faster than 0.05/s you are likely at an energy minima.  This is true ONLY FOR Wiggling (W/E).  If you are shaking pay attention to the number of cycles on the upper left corner.  Often the low energy is found after 5-10 cycles (cycles is the number in the parenthesis after the timer).</li>
+</ul>
+
+<h2>General Energy Rules (on a per amino acid basis)</h2>
+
+<ul>
+<li>Energies less than 0 are good.</li>
+<li>Energies 0 - +2 can be ok if clashing (fa_rep) is low (i.e. &lt;1)</li>
+<li>Energies +2 - +5 are iffy… but can work if you think the "static" picture is missing the enabling feature</li>
+<li>Energies +5 - +10 are are unlikely… something will likely have to move for this to work</li>
+<li>Energies >+10 are really unlikely to work… but go for it if you have a good reason</li>
+</ul>
 
 <div class="row">
   <div class="col-lg-12">
