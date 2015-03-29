@@ -8,69 +8,66 @@
   <p class="lead">Michaelis-Menten constants for our model systems</p>
 </div>
 
-<div class="row head">
-  <div class="col-md-2">
-    <h4>System <small>Mutant</small></h4>
-  </div>
 
-  <div class="col-md-3">
-    <h4>Substrate</h4>
-  </div>
-
-  <div class="col-md-2">
-    <h4>k<sub><em>cat</em></sub> (sec<sup>&ndash;1</sup>)</h4>
-  </div>
-  
-  <div class="col-md-2">
-    <h4>K<sub><em>M</em></sub> (M)</h4>
-  </div>
-  
-  <div class="col-md-2">
-    <h4>Efficiency (M/sec)</h4>
-  </div>
-  
-  <div class="col-sm-1">
-    <h4><b>+</b></h4>
-  </div>
-</div> <!-- ends div.head -->
+<table class="table table-hover">
+  <thead> 
+    <tr>
+      <th>System <small>Mutant</small></th>
+      <th>Substrate</th>
+      <th>k<sub><em>cat</em></sub> (min<sup>&ndash;1</sup>)</th>
+      <th>K<sub><em>M</em></sub> (M)</th>
+      <th>Efficiency&nbsp;(M<sup>&minus;1</sup>min<sup>&minus;1</sup>)</th>
+    </tr>
+  </thead>
+  <tbody>
 
 {% for entry in entry_list %} 
-<div class="row entry">
+
+    <tr data-toggle="collapse" data-target="#id_{{ entry.id }}" aria-expanded="false"> 
+      <td><p><b>BglB </b><small>{{entry.mutant|upper }}</small></p></td>
+      <td> <p><a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.cid}}">
+           {{entry.substrate}}</a></p>
+      </td>
+
+      <td>
+        <p>{{entry.kcat|stringformat:"1.0e"}} &plusmn; {{entry.err1|stringformat:"1.0e"}}</p>
+      </td>
+
+      <td>
+        <p>{{entry.km|stringformat:"1.0e"}} &plusmn; {{entry.err2|stringformat:"1.0e"}}</p>
+      </td>
+
+      <td>
+        <p>{{entry.eff|stringformat:"1.0e"}} &plusmn; {{entry.err3|stringformat:"1.0e"}}</p>
+      </td>
+    </tr>
   
-  <div class="col-md-2">
-    <p><b>BglB</b> <small>{{entry.mutant}}</small></p>
-  </div>
-  
-  <div class="col-md-3">
-    <p><a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.cid}}">
-       {{entry.substrate}}</a></p>
-  </div>
-
-  <div class="col-md-2">
-    <p>{{entry.kcat|stringformat:"1.0e"}} &plusmn; {{entry.err1|stringformat:"1.0e"}}</p>
-  </div>
-
-  <div class="col-md-2">
-    <p>{{entry.km|stringformat:"1.0e"}} &plusmn; {{entry.err2|stringformat:"1.0e"}}</p>
-  </div>
-
-  <div class="col-md-2">
-    <p>{{entry.eff|stringformat:"1.0e"}} &plusmn; {{entry.err3|stringformat:"1.0e"}}</p>
-  </div>
-
-  <div class="col-md-1">
-    <p>
-  </div>
-</div>
-  
-<div class="row meta" id="id_{{entry.id}}">
-  <div class="col-lg-12" style="display:none">
-  	<p>Published {{entry.date}}</p>
-    <p>Protein yield {{entry.yyield}} mg/mL</p>  
-    <p><a href="">Download PDB</a></p>
-    <p><a href="">Download raw data</a></p>
-  </div>
-</div>
-
+    <tr class="collapse" id="id_{{entry.id}}">
+      <td class="metadata" colspan=6>
+        <table>
+          <tr>
+            <td>
+              <img src="/static/blob.png" width=100 >
+            </td>
+            <td>
+              <p><a href="">Molecular model</a></p>
+              <p><a href="">Structural features</a></p>
+              <p><a href="">Raw data</a></p>
+            </td>
+            <td>
+                <p><strong>Published</strong> {{entry.date}} </p>
+                <p><strong>Protein yield</strong> {{entry.yyield}} mg/mL</p>
+                <p><strong>Submitted by</strong> SEEK Team</p>
+            </td>
+            <td>
+               <img height=100 src="data:image/png;base64,{{ entry.lin }}"/>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
 {%endfor%}
+</tbody>
+</table>
+
 {% endblock %}
