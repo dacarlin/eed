@@ -47,20 +47,24 @@
         <table>
           <tr>
             <td>
+                <p><strong>Published</strong> {{entry.date}} </p>
+                <p><strong>Protein yield</strong> {{entry.yyield}} mg/mL</p>
+                <p><strong>Submitted by</strong> SEEK Team</p>
+            </td>
+            
+            <td>
               <img src="/static/blob.png" width=100 >
             </td>
             <td>
               <p><a href="">Molecular model</a></p>
               <p><a href="">Structural features</a></p>
-              <p><a href="">Raw data</a></p>
-            </td>
-            <td>
-                <p><strong>Published</strong> {{entry.date}} </p>
-                <p><strong>Protein yield</strong> {{entry.yyield}} mg/mL</p>
-                <p><strong>Submitted by</strong> SEEK Team</p>
             </td>
             <td>
                <img height=100 src="data:image/png;base64,{{ entry.lin }}"/>
+            </td>
+            <td>
+              <p><a href="">Diagnostic plots</a></p>
+              <p><a href="">Raw data</a></p>
             </td>
           </tr>
         </table>

@@ -8,37 +8,46 @@
 
 {% for sample, value in analyses.items %}
 <div class="row">
-  <div class="col-md-4">
+
+  <div class="col-md-6">
+    <h2>{{sample|upper}} <small>BglB</small> </h2>
+
+    <h3>Kinetic constants</h3>
+      <table class="table table-hover table-bordered table-condensed">
+        <tr>
+          <td>k<sub><em>cat</em></sub></td>
+          <td>
+            {{value.kcat|stringformat:"1.0e"}} &plusmn; {{value.err1|stringformat:"1.0e"}} min<sup>&ndash;1</sup> 
+          </td>
+        </tr>
+      
+        <tr>
+      <td>K<sub><em>M</em></sub></td>
+      <td>{{value.km|stringformat:"1.0e"}} &plusmn; {{value.err2|stringformat:"1.0e"}} M</td>
+    </tr>
+    <tr>
+      <td>Efficiency</td>
+      <td>{{value.eff|stringformat:"1.0e"}} &plusmn; {{value.err3|stringformat:"1.0e"}} </td>
+    </tr>
+      </table>
+  </div>
+
+
+  
+  <div class="col-md-3">
     <a href="data:image/png;base64,{{ value.linear_plot }}">
-      <img height=300 src="data:image/png;base64,{{ value.linear_plot }}"/>
+      <img style="width:100%" src="data:image/png;base64,{{ value.linear_plot }}"/>
     </a>
   </div>
-  <div class="col-md-4">
-    <h2>{{sample|upper}}</h2>
-    <table class="table table-hover table-bordered table-condensed">
-      <tr>
-        <td>
-          k<sub><em>cat</em></sub>
-        </td>
-        <td>
-          {{value.kcat|stringformat:"1.0e"}} &plusmn; {{value.err1|stringformat:"1.0e"}} min<sup>&ndash;1</sup> 
-        </td>
-      </tr>
-      
-      <tr>
-    <td>K<sub><em>M</em></sub></td>
-    <td>{{value.km|stringformat:"1.0e"}} &plusmn; {{value.err2|stringformat:"1.0e"}} M</td>
-  </tr>
-  <tr>
-    <td>Efficiency</td>
-    <td>{{value.eff|stringformat:"1.0e"}} &plusmn; {{value.err3|stringformat:"1.0e"}} </td>
-  </tr>
-    </table>
-  </div>
-  <div class="col-md-4">
   
+  <div class="col-md-3">
+    <a href="data:image/png;base64,{{ value.mm_plot }}">
+      <img style="width:100%" src="data:image/png;base64,{{ value.mm_plot }}"/>
+    </a>
   </div>
+
   
+
 </div>
 <hr>
 {% endfor %}

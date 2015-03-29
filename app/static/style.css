@@ -1,15 +1,9 @@
 p { font-family: ""; }
 
-h1 {
+h1.main {
   /* background: url('ray.png') 50% bottom no-repeat; */
-  background: url('blob.png') right center no-repeat;
-  background-size: contain;
-}
-
-
-
-div.col-md-6 h2 { /*should be namespaced for FAQs*/
-  text-align: center;
+  background: url('blob.png') right center no-repeat; 
+  background-size: contain; 
 }
 
 video { width: 100%; }

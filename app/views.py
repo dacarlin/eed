@@ -4,17 +4,17 @@ from django.core.urlresolvers import reverse
 from django.views import generic
 from app.models import DataEntry, DataEntryForm, Entry
 
-def adam(request):
+def submit(request):
   if request.method == 'POST':
     form = DataEntryForm(request.POST)
     if form.is_valid():
       analyses = form.process()
       return render(request, 'app/preview.html', { 'analyses': analyses, 'form': form, } )
     else:
-      return render(request, 'app/cookbook.html', { 'form': form, } )
+      return render(request, 'app/submit.html', { 'form': form, } )
   else:
     form = DataEntryForm()
-    return render(request, 'app/cookbook.html', {'form': form} )
+    return render(request, 'app/submit.html', {'form': form} )
 
 def thanks(request):
   if request.method == 'POST':
@@ -56,3 +56,6 @@ def index(request):
 
 def help(request):
   return render( request, 'app/help.html' )
+
+def methods(request):
+  return render( request, 'app/methods.html' )

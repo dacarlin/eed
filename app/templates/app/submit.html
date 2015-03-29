@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %} SEEK: Submit your data {% endblock title %}
+{% block content %}
+
+<div class="page-header">
+  <h1>Submit data to SEEK</h1>
+  <p class="lead">Contribute data to the project</p>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>Instructions</h2>
+    <p>To submit your data to seek, collect it using the format of the CSV in the example box as a guide.
+      Ensure that your data table contains at least the following columns</p>
+    
+    <ul>
+      <li>substrate concentration (use header "s")</li>
+      <li>rate observed (use header "kobs")</li>
+      <li>sample (header "sample")</li>
+    </ul>
+  </div>
+  
+  <div class="col-md-6">
+    <h2>Example submission</h2>
+    <form action="." method="post" class="analysis">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success" value="Get kinetic constants">
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

@@ -71,9 +71,9 @@
     <h4>Use the advanced design interface</h3>
     <p>Enable the following options for best experience:</p>
     <ul>
-      <li>Menu --> Selection Interface</li>
-      <li>Menu --> General Options --> Show Advanced GUI</li>
-      <li>Menu --> View Options 
+      <li>Menu &rarr; Selection Interface</li>
+      <li>Menu &rarr; General Options &rarr; Show Advanced GUI</li>
+      <li>Menu &rarr; View Options 
         <ul>
           <li>Cartoon Thin</li>
           <li>Score/Hydro+CPK</li>
@@ -87,11 +87,7 @@
     <h4>Residue energy</h4>
     <p>Mouse over residue so it is highlighted and hit Tab</p>
   </div>
-  <div class="col-md-7">
-    <video controls muted>
-      <source src="/static/start-foldit.mp4">
-    </video>
-    
+  <div class="col-md-7">    
     <h3>Commands reference </h3>
     <h4>Viewing</h4>
     <ul>
@@ -104,7 +100,7 @@
     <h4>Selecting</h4>
     <ul>
       <li><p>See upper left corner of Foldit</p></li>
-      <li><p>SphereAround:  Ctrl-Shift-Click on residue and drag. </p></li>
+      <li><p>Sphere Around:  Ctrl-Shift-Click on residue and drag </p></li>
     </ul>
 
     <h4>Design</h4>
@@ -114,7 +110,7 @@
     
     <h4>Terminal </h4>
     <ul>
-    <li>(Main --> Script Terminal)</li>
+    <li>(Main &rarr; Script Terminal)</li>
     <li>Select specific residue:  selection.Select(<res#>)</li>
     <li>Zoom to specific residue:  ui.CenterViewport(<res#>)</li>
     </ul>    
@@ -129,7 +125,7 @@
 <li>Importance of score is in order as it appears in the Tab menu</li>
 <li>Native or close to native is generally better</li>
 <li>Manually force the interaction you want and then side-chain wiggle (E) those residues and the ones around it</li>
-<li>General order of operations:  E --> S --> E</li>
+<li>General order of operations:  E &rarr; S &rarr; E</li>
 <li>If score is not dropping faster than 0.05/s you are likely at an energy minima.  This is true ONLY FOR Wiggling (W/E).  If you are shaking pay attention to the number of cycles on the upper left corner.  Often the low energy is found after 5-10 cycles (cycles is the number in the parenthesis after the timer).</li>
 </ul>
 
@@ -154,23 +150,6 @@
 </div>
 
 <h3>Day 0: Genetic constructs and working stocks </h3>
-
-<!-- <div class="row">
-  <div class="col-md-6">
-    <h4>Hardware</h4>
-    <ul>
-      <li></li>
-    </ul>
-  </div>
-
-  <div class="col-md-6">
-    <h4>Software</h4>
-    <ul>
-      <li></li>
-    </ul>
-  </div>
-</div> -->
-
 <div class="row">
   <div class="col-md-6">
     <h4>Genetic constructs</h4>
@@ -260,9 +239,6 @@
     </ol>
   </div>
   <div class="col-md-3">
-    <video controls muted>
-      <source src="/static/Video.MOV">
-    </video>
   </div>
 </div>
 
@@ -296,8 +272,6 @@
     
   </div>
   <div class="col-md-6">
-  <!-- video or photos -->
-    <img src="blah"/>
   </div>
 </div>
 
@@ -336,8 +310,6 @@
     
   </div>
   <div class="col-md-6">
-  <!-- video or photos -->
-    <img src="blah"/>
   </div>
 </div>
 
@@ -385,8 +357,6 @@
     
   </div>
   <div class="col-md-6">
-  <!-- video or photos -->
-    <img src="blah"/>
   </div>
 </div>
 
@@ -449,14 +419,6 @@
   </div>
   
   <div class="col-md-6">
-    <h3>Data analysis</h3>
-    <p>You can paste in a CSV file to the text box below or try the example</p>
-
-    <form action="." method="post" class="analysis">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" class="btn btn-success" value="Get kinetic constants">
-    </form>
   </div>
 </div>
 
