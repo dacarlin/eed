@@ -22,7 +22,6 @@
   <tbody>
 
 {% for entry in entry_list %} 
-
     <tr data-toggle="collapse" data-target="#id_{{ entry.id }}" aria-expanded="false"> 
       <td><p><b>BglB </b><small>{{entry.mutant|upper }}</small></p></td>
       <td> <p><a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.cid}}">
