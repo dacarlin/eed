@@ -5,12 +5,14 @@ from pandas import read_csv
 from django.db.models import *
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+from scipy.stats import linregress
 from django.forms import ModelForm, ValidationError
 
 def mm(S, kcat, km): 
   return kcat*S/(km+S)
 
 class Entry(Model):
+
   # meta
   date = DateTimeField(auto_now_add=True)
   public = BooleanField(default=False)
@@ -33,30 +35,15 @@ class Entry(Model):
   raw = TextField()
 
 def fit(data):
-  
   params, cov = curve_fit( mm, data['s'], data['kobs'], p0=(100,0.005) )
-  residuals = mm(data['s'],params[0],params[1]) - data['kobs']
-  fres = sum(residuals**2)
   error = [ abs(cov[i][i])**0.5 for i in range(len(params)) ]
-
-  def lm(S, m, b): return m*S+b
-  lparams, lcov = curve_fit( lm, data['s'], data['kobs'], p0=(1000,0) )
-  lresiduals = lm(data['s'],params[0],params[1]) - data['kobs']
-  lfres = sum(lresiduals**2)
-  lerror = [ abs(lcov[i][i])**0.5 for i in range(len(lparams)) ]
+  slope, intercept, r_value, p_value, std_err = linregress( data.s, data.kobs )
   
-  if lfres < fres:
-    kcat, err1, km, err2 = ['NA' * 4]
-    eff, err3 = '', ''
-    xdata = linspace(0,max(data['s']))
-    ydata = [  lm(x,params[0],params[1]) for x in xdata ]
-
-  else:
-    kcat, km  = params
-    err1, err2 = error
-    eff, err3 = (kcat/km, kcat/km*(err1/kcat)**2+(err2/km)**2)
-    xdata = linspace(0,max(data['s']))
-    ydata = [  mm(x,params[0],params[1]) for x in xdata ]
+  kcat, km  = params
+  err1, err2 = error
+  eff, err3 = (kcat/km, kcat/km*(err1/kcat)**2+(err2/km)**2)
+  xdata = linspace(0,max(data.s))
+  ydata = [ mm(x,params[0],params[1]) for x in xdata ]
 
   stream = io.BytesIO()
   plt.figure()

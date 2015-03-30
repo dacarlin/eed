@@ -1,29 +1,17 @@
-p { font-family: ""; }
-
 h1.main {
-  /* background: url('ray.png') 50% bottom no-repeat; */
   background: url('blob.png') right center no-repeat; 
   background-size: contain; 
 }
 
-video { width: 100%; }
-
 form.analysis textarea { width: 100%;}
 form.analysis label { display: none; }
 
-/*browse*/
-
 td.metadata table tr td {
  padding: 1em;
-}
-
-td {
-  vertical-align: center;
 }
 
 .seqlogo {
 	background: no-repeat;
 	background-position: top left; 
 	background-size: 100%; 
-	
 }

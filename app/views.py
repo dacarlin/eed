@@ -44,10 +44,8 @@ def thanks(request):
 
 def browse(request):
   # clearly this could get a lot better
-  
   # get all Entry objects and order by newest first 
   entry_list = Entry.objects.all().order_by('-date')
-  
   # pass to the template browse.html as a dict 
   return render( request, 'app/browse.html', { 'entry_list': entry_list } )
   # I guess django.shortcuts.render( object request, path template, dict stuff for template )

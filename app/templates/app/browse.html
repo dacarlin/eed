@@ -2,22 +2,11 @@
 {% load seekFilters %}
 {% load staticfiles %}
 
-{% block title %}SEEK: Browse kinetic constants{% endblock %}
+{% block title %}SEEK: Browse{% endblock %}
 
 <div class="page-header">
-
-{% if thank == 1 %}
-
   <h1>Standardized database: kinetic constants</h1>
   <p class="lead">Michaelis-Menten constants for our model systems</p>
-
-{% else %}
-
-  <h1>Standardized database: kinetic constants</h1>
-  <p class="lead">Michaelis-Menten constants for our model systems</p>
-
-{% endif %}
-
 </div>
 
 {% block content %}
