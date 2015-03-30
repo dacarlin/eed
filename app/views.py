@@ -30,8 +30,10 @@ def thanks(request):
         entry.mm = dic['mm_plot']
         entry.lin = dic['linear_plot']
         entry.__dict__.update( analyses[sample] )
-        entry.save()      
-      return render(request, 'app/thanks.html', { 'analyses': analyses, 'form': form, } )
+        entry.save()
+
+      entry_list = Entry.objects.all().order_by('-date')        
+      return render(request, 'app/browse.html', { 'analyses': analyses, 'form': form, 'entry_list': entry_list, 'thank': 1,  } )
     
     else: # form isn't valid
       # why? bad password? 

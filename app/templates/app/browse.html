@@ -3,19 +3,28 @@
 {% load staticfiles %}
 
 {% block title %}SEEK: Browse kinetic constants{% endblock %}
-{% block content %}
 
 <div class="page-header">
+
+{% if thank == 1 %}
+
   <h1>Standardized database: kinetic constants</h1>
   <p class="lead">Michaelis-Menten constants for our model systems</p>
+
+{% else %}
+
+  <h1>Standardized database: kinetic constants</h1>
+  <p class="lead">Michaelis-Menten constants for our model systems</p>
+
+{% endif %}
+
 </div>
 
-
+{% block content %}
 <table class="table table-hover">
   <thead> 
     <tr>
-      <th>System <small>Mutant</small></th>
-
+      <th>Enzyme</th>
       <th>Substrate</th>
       <th>k<sub><em>cat</em></sub> (min<sup>&ndash;1</sup>)</th>
       <th>K<sub><em>M</em></sub> (M)</th>
@@ -24,7 +33,6 @@
     </tr>
     <tr>
       <td></td>
-
       <td></td>
       <td>min<sup>&ndash;1</sup></td>
       <td>M</td>
@@ -36,22 +44,24 @@
 
 {% for entry in entry_list %} 
     <tr data-toggle="collapse" data-target="#id_{{ entry.id }}" aria-expanded="false"> 
-      <td><p><b>BglB </b><small>{{entry.mutant|upper }}</small></p></td>
+      <td>
+        <b>BglB</b> <small>{{entry.mutant|upper }}</small>
+      </td>
 
-      <td> <p><a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.cid}}">
-           {{entry.substrate}}</a></p>
+      <td>
+        <a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.cid}}"> {{entry.substrate}}</a>
       </td>
 
       <td style="background-color:{{entry.kcat|kcatStyle}}">
-        <p>{{entry.kcat|stringformat:"1.0e"}} &plusmn; {{entry.err1|stringformat:"1.0e"}}</p>
+        {{entry.kcat|stringformat:"1.0e"}} &plusmn; {{entry.err1|stringformat:"1.0e"}}
       </td>
 
       <td style="background-color:{{entry.km|kmStyle}}">
-        <p>{{entry.km|stringformat:"1.0e"}} &plusmn; {{entry.err2|stringformat:"1.0e"}}</p>
+        {{entry.km|stringformat:"1.0e"}} &plusmn; {{entry.err2|stringformat:"1.0e"}}
       </td>
 
       <td style="background-color:{{entry.eff|effStyle}}">
-        <p>{{entry.eff|stringformat:"1.0e"}} &plusmn; {{entry.err3|stringformat:"1.0e"}}</p>
+        {{entry.eff|stringformat:"1.0e"}} &plusmn; {{entry.err3|stringformat:"1.0e"}}
       </td>
 
       <td class="seqlogo" style="background-image: url('/static/slices/slice_{{entry.mutant|seq}}.png');" />
