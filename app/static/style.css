@@ -20,3 +20,10 @@ td.metadata table tr td {
 td {
   vertical-align: center;
 }
+
+.seqlogo {
+	background: no-repeat;
+	background-position: top left; 
+	background-size: 100%; 
+	
+}

@@ -7,6 +7,9 @@ import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from django.forms import ModelForm, ValidationError
 
+def mm(S, kcat, km): 
+  return kcat*S/(km+S)
+
 class Entry(Model):
   # meta
   date = DateTimeField(auto_now_add=True)
@@ -30,7 +33,7 @@ class Entry(Model):
   raw = TextField()
 
 def fit(data):
-  def mm(S, kcat, km): return kcat*S/(km+S)
+  
   params, cov = curve_fit( mm, data['s'], data['kobs'], p0=(100,0.005) )
   residuals = mm(data['s'],params[0],params[1]) - data['kobs']
   fres = sum(residuals**2)
