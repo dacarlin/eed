@@ -8,7 +8,7 @@ from scipy.optimize import curve_fit
 from scipy.stats import linregress
 from django.forms import ModelForm, ValidationError
 
-def mm(S, kcat, km): 
+def mm(S, kcat, km):
   return kcat*S/(km+S)
 
 class Entry(Model):
@@ -16,20 +16,20 @@ class Entry(Model):
   # meta
   date = DateTimeField(auto_now_add=True)
   public = BooleanField(default=False)
-  
+
   # bio
   sys = CharField(max_length=10)
   mutant = CharField(max_length=199)
   yyield = FloatField()
   substrate = CharField(max_length=199)
   cid = CharField(max_length=20)
-  
+
   # const
   eff, err3 = FloatField(), FloatField()
   kcat, err1 = FloatField(), FloatField()
   km, err2 = FloatField(), FloatField()
-  
-  # file-like 
+
+  # file-like
   lin, mm = TextField(), TextField()
   pdb = TextField()
   raw = TextField()
@@ -38,7 +38,7 @@ def fit(data):
   params, cov = curve_fit( mm, data['s'], data['kobs'], p0=(100,0.005) )
   error = [ abs(cov[i][i])**0.5 for i in range(len(params)) ]
   slope, intercept, r_value, p_value, std_err = linregress( data.s, data.kobs )
-  
+
   kcat, km  = params
   err1, err2 = error
   eff, err3 = (kcat/km, kcat/km*(err1/kcat)**2+(err2/km)**2)
@@ -61,8 +61,8 @@ def fit(data):
   return {  'substrate': '4-nitrophenyl-beta-D-glucoside',
             'cid' : '92930',
             'yyield': 1.02,
-            'kcat': kcat, 'err1': err1, 
-            'km': km, 'err2': err2, 
+            'kcat': kcat, 'err1': err1,
+            'km': km, 'err2': err2,
             'eff': eff, 'err3': err3,
             'linear_plot': linear_plot, 'mm_plot': mm_plot }
 
@@ -164,15 +164,15 @@ wt4,1.977,11.342554,0.00007
 wt4,1.977,2.926662,0.00002
 wt4,1.977,0.088939,0.00000
 """
-  
+
   csv = TextField(default=example)
 
 class DataEntryForm(ModelForm):
   class Meta:
      model = DataEntry
+     fields = '__all__'
 
   def process(self):
     data = read_csv(io.StringIO(self.cleaned_data['csv']))
     # should definitely try to clean up data here, check for S versus s, etc.
     return data.groupby(by='sample').apply(fit).to_dict()
-    

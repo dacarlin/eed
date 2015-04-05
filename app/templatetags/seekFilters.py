@@ -1,42 +1,76 @@
 from django import template
-from math import log
+#from numpy import log
+import numpy as np
 from re import match
 
 register = template.Library()
 
-# to determine how transparent to make the values, first decide if the value is
-# greater than the wild type.
-# if it is larger, divide the wild type by the value and subtract that from one. The
-# values furthest from the wild type will be darker (yellow)
-# if it is smaller, then subtract that percentage from one and the
-# values furthest from the wild type will be darker (blue)
+wt_kcat = 840
+wt_km = 0.005
+wt_eff = 171000
 
 @register.filter(name = 'kcatStyle')
 def kcatStyle(value):
-    if value > 840:
-        a = 1 - (840/value)
-        return "rgba( 255, 255, 0, %.2f )" % a
+
+    logValue = np.log10( (value/wt_kcat) )
+    if logValue < 0:
+        if -1 < logValue < 0:
+            return "rgb( 150, 205, 205 )"
+        elif -2 < logValue < -1:
+            return "rgb( 102, 139, 139 )"
+        else:
+            return "rgb( 47, 79, 79 )"
+    elif logValue > 0:
+        if 0 < logValue < 1:
+            return "rgb( 238, 233, 191 )"
+        elif 1 < logValue < 2:
+            return "rgb( 238, 220, 130 )"
+        else:
+            return "rgb( 205, 173, 0 )"
     else:
-        a = 1 - (value/840)
-        return "rgba( 0, 0, 255, %.2f )" % a
+        return "rgb( 224, 224, 224 )"
 
 @register.filter(name = 'kmStyle')
 def kmStyle(value):
-    if value > 0.005:
-        a = 1 - value
-        return "rgba( 255, 255, 0, %.2f )" % a
+
+    logValue = np.log10( (value/wt_km) )
+    if logValue < 0:
+        if -1 < logValue < 0:
+            return "rgb( 150, 205, 205 )"
+        elif -2 < logValue < -1:
+            return "rgb( 102, 139, 139 )"
+        else:
+            return "rgb( 47, 79, 79 )"
+    elif logValue > 0:
+        if 0 < logValue < 1:
+            return "rgb( 238, 233, 191 )"
+        elif 1 < logValue < 2:
+            return "rgb( 238, 220, 130 )"
+        else:
+            return "rgb( 205, 173, 0 )"
     else:
-        a = 1 - (value/0.005)
-        return "rgba( 0, 0, 255, %.2f )" % a
+        return "rgb( 224, 224, 224 )"
 
 @register.filter(name = 'effStyle')
 def effStyle(value):
-    if value > 171000:
-        a = 1 - (171000/value)
-        return "rgba( 255, 255, 0, %.2f )" % a
+
+    logValue = np.log10( (value/wt_eff) )
+    if logValue < 0:
+        if -1 < logValue < 0:
+            return "rgb( 150, 205, 205 )"
+        elif -2 < logValue < -1:
+            return "rgb( 102, 139, 139 )"
+        else:
+            return "rgb( 47, 79, 79 )"
+    elif logValue > 0:
+        if 0 < logValue < 1:
+            return "rgb( 238, 233, 191 )"
+        elif 1 < logValue < 2:
+            return "rgb( 238, 220, 130 )"
+        else:
+            return "rgb( 205, 173, 0 )"
     else:
-        a = 1 - (value/171000)
-        return "rgba( 0, 0, 255, %.2f )" % a
+        return "rgb( 224, 224, 224 )"
 
 @register.filter(name = 'seq' )
 def tr( value ):
