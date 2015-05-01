@@ -33,7 +33,7 @@ def thanks(request):
         entry.save()
 
       entry_list = Entry.objects.all().order_by('-date')        
-      return render(request, 'app/browse.html', { 'analyses': analyses, 'form': form, 'entry_list': entry_list, 'thank': 1,  } )
+      return render(request, 'app/browse.html', { 'analyses': analyses, 'form': form, 'entry_list': entry_list, 'thanks': True,  } )
     
     else: # form isn't valid
       # why? bad password? 

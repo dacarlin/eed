@@ -1,15 +1,25 @@
 {% extends "base.html" %}
-{% load seekFilters %}
+{% load custom_filters %} 
 {% load staticfiles %}
 
 {% block title %}SEEK: Browse{% endblock %}
 
+{% block content %}
+
 <div class="page-header">
+{% if thanks %}
+  <h1>Thank you for your submission</h1>
+  <p class="lead">Submissions are reviewed by the SEEK Team, so please give us a few days before your 
+    submission becomes public. The full SEEK database with your contribution is available below and both 
+    <a href="">your submission</a> and the <a href="">complete database</a> are available in CSV format.</p>
+  <p class="lead"><small>Need help? Email the <a href="">SEEK Team</a></small></p> 
+
+{% else %} 
   <h1>Standardized database: kinetic constants</h1>
   <p class="lead">Michaelis-Menten constants for our model systems</p>
+{% endif %} 
 </div>
 
-{% block content %}
 <table class="table table-hover">
   <thead> 
     <tr>
@@ -41,19 +51,19 @@
         <a href="https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid={{entry.cid}}"> {{entry.substrate}}</a>
       </td>
 
-      <td style="background-color:{{entry.kcat|kcatStyle}}">
-        {{entry.kcat|stringformat:"1.0e"}} &plusmn; {{entry.err1|stringformat:"1.0e"}}
+      <td style="background-color:{{entry.kcat|colorize:800}}">
+        {{entry.kcat|stringformat:".0f"}} <!-- &plusmn; {{entry.err1|stringformat:"1.0e"}} -->
       </td>
 
-      <td style="background-color:{{entry.km|kmStyle}}">
-        {{entry.km|stringformat:"1.0e"}} &plusmn; {{entry.err2|stringformat:"1.0e"}}
+      <td style="background-color:{{entry.km|compare_to:0.0056}}">
+        {{ entry.km|stringformat:".4f" }} <!-- &plusmn; {{entry.err2|stringformat:"1.0e"}} -->
       </td>
 
-      <td style="background-color:{{entry.eff|effStyle}}">
-        {{entry.eff|stringformat:"1.0e"}} &plusmn; {{entry.err3|stringformat:"1.0e"}}
+      <td style="background-color:{{entry.eff|compare_to:171000}}">
+        {{entry.eff|stringformat:".0f"}} <!-- &plusmn; {{entry.err3|stringformat:"1.0e"}} -->
       </td>
 
-      <td class="seqlogo" style="background-image: url('/static/slices/slice_{{entry.mutant|seq}}.png');" />
+      <td class="seqlogo" style="background-image: url('/static/slices/slice_{{entry.mutant|cut}}.png');" />
       </td>
     </tr>
 
