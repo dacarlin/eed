@@ -5,10 +5,6 @@ from re import match
 
 register = template.Library()
 
-wt_kcat = 840
-wt_km = 0.005
-wt_eff = 171000
-
 color = {
   -3: "rgb( 47, 79, 79 )", 
   -2: "rgb( 102, 139, 139 )", 
