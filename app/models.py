@@ -1,12 +1,18 @@
 import io
 import base64
-from numpy import linspace
 from pandas import read_csv
 from django.db.models import *
-import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 from scipy.stats import linregress
+from scipy import arange 
 from django.forms import ModelForm, ValidationError
+
+# special import of matplotlib 
+# do this before importing pylab or pyplot
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import StringIO 
 
 def mm(S, kcat, km):
   return kcat*S/(km+S)
@@ -26,8 +32,8 @@ class Entry(Model):
 
   # const
   eff, err3 = FloatField(), FloatField()
-  kcat, err1 = FloatField(), FloatField()
-  km, err2 = FloatField(), FloatField()
+  kcat, err1 = FloatField( null=True ), FloatField( null=True )
+  km, err2 = FloatField( null=True ), FloatField( null=True )
 
   # file-like
   lin, mm = TextField(), TextField()
@@ -35,32 +41,50 @@ class Entry(Model):
   raw = TextField()
 
 def fit(data):
-  params, cov = curve_fit( mm, data['s'], data['kobs'], p0=(100,0.005) )
-  error = [ abs(cov[i][i])**0.5 for i in range(len(params)) ]
+  '''Attempts to fit a pandas DataFrame containing the columns kobs and s 
+     to the Michaelis-Menten equation and falls back to a linear fit to 
+     kcat/km if high error is observed. Also makes diagnostic plots''' 
+
+  # set up the plots 
+  fig = plt.figure()
+  ax = fig.add_subplot(111) 
+  ax.scatter( data.s, data.kobs )
+  ax.grid(True)
+  ax.set_xlabel('Substrate concentration (M)')
+  ax.set_ylabel('Rate observed (M/s)')
+  imgdata = StringIO.StringIO()
+
+  # try the mm fit 
+  ( kcat, km ), cov = curve_fit( mm, data.s, data.kobs, p0=( data.kobs.max(),data.s.mean() ))
+  err1, err2 = [ abs(cov[i][i])**0.5 for i in range(2) ]
+  eff, err3 = (kcat/km, kcat*(err1/kcat)**2+km*(err2/km)**2)
+
+  # try the linear fit
   slope, intercept, r_value, p_value, std_err = linregress( data.s, data.kobs )
 
-  kcat, km  = params
-  err1, err2 = error
-  eff, err3 = (kcat/km, kcat/km*(err1/kcat)**2+(err2/km)**2)
-  xdata = linspace(0,max(data.s))
-  ydata = [ mm(x,params[0],params[1]) for x in xdata ]
+  # error checking 
+  if err1/kcat < 0.5 and err2/km < 0.5:
+    ax.scatter( arange(0,data.s.max(),100), [mm(x, kcat, km) for x in arange(0,data.s.max(),100) ] ) 
+  elif err1/kcat < 0.5 and err2/km > 0.5:
+    km = err2 = None
+    eff, err3 = slope, std_err
+  elif err1/kcat > 0.5 and err2/km < 0.5:
+    kcat = err1 = None
+    eff, err3 = slope, std_err
+  elif err1/kcat > 0.5 and err2/km > 0.5: # both errors too high 
+    kcat = km = err1 = err2 =  None 
+    eff, err3 = slope, std_err 
+  else:
+    kcat = km = err1 = err2 = err3 = eff = None 
 
-  stream = io.BytesIO()
-  plt.figure()
-  plt.grid(True)
-  plt.xlabel('Substrate concentration (M)')
-  plt.ylabel('Rate observed (M/s)')
-  plt.plot(xdata,ydata)
-  plt.scatter(data['s'], data['kobs'])
-  plt.savefig(stream, format='png')
-  stream.seek(0)
-  linear_plot = base64.b64encode(stream.read())
-  stream.seek(0)
-  mm_plot = base64.b64encode(stream.read())
+  # pick up the plotting again now that we have done error checking 
+  fig.savefig( imgdata, format='png' ) 
+  imgdata.seek(0)
+  mm_plot = linear_plot = base64.b64encode( imgdata.read() ) 
 
   return {  'substrate': '4-nitrophenyl-beta-D-glucoside',
             'cid' : '92930',
-            'yyield': 1.02,
+            'yyield': data['yield'].mean(), 
             'kcat': kcat, 'err1': err1,
             'km': km, 'err2': err2,
             'eff': eff, 'err3': err3,
@@ -166,6 +190,7 @@ wt4,1.977,0.088939,0.00000
 """
 
   csv = TextField(default=example)
+  name = CharField(default="the SEEK Team", max_length=200) 
 
 class DataEntryForm(ModelForm):
   class Meta:
