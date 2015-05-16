@@ -21,16 +21,16 @@
         <tr>
           <th>k<sub>cat</sub></th>
           <td>
-            {{value.kcat|stringformat:"1.0e"}} &plusmn; {{value.err1|stringformat:"1.0e"}} min<sup>&ndash;1</sup> 
+            {{value.kcat|stringformat:".0f"}} &plusmn; {{value.err1|stringformat:"1.0e"}} min<sup>&ndash;1</sup> 
           </td>
         </tr>
         <tr>
       <th>K<sub><em>M</em></sub></th>
-      <td>{{value.km|stringformat:"1.0e"}} &plusmn; {{value.err2|stringformat:"1.0e"}} M</td>
+      <td>{{value.km|stringformat:".5f"}} &plusmn; {{value.err2|stringformat:"1.0e"}} M</td>
     </tr>
     <tr>
       <th>Efficiency</th>
-      <td>{{value.eff|stringformat:"1.0e"}} &plusmn; {{value.err3|stringformat:"1.0e"}} </td>
+      <td>{{value.eff|stringformat:".0f"}} &plusmn; {{value.err3|stringformat:"1.0e"}} </td>
     </tr>
       </table>
   </div>
