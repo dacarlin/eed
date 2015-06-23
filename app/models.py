@@ -12,7 +12,7 @@ from django.forms import ModelForm, ValidationError
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import StringIO 
+from io import StringIO 
 
 def mm(S, kcat, km):
   return kcat*S/(km+S)
