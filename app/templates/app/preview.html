@@ -9,38 +9,42 @@
 <form action="/thanks/" method="post">{% csrf_token %}
 {% for sample, value in analyses.items %}
 <div class="row">
-  <div class="col-md-2">
+
+  <div class="col-md-4">
+
+
     <input id="{{ sample }}" type="checkbox" checked>
     <label for="{{sample}}"><span style="padding:0.5em;font-weight:normal;font-style:italic;color:#ccc;">Submit?</span></label>
-    <h2>{{sample|upper}} <br><small>BglB</small> </h2>
-  </div>
-  <div class="col-md-4">
-    
-    <h3>Kinetic constants</h3>
+    <h2>{{sample|upper}} <small>BglB</small>  </h2>
+
       <table class="table table-hover table-bordered table-condensed">
+      {% if value.kcat %}
         <tr>
           <th>k<sub>cat</sub></th>
           <td>
-            {{value.kcat|stringformat:".0f"}} &plusmn; {{value.err1|stringformat:"1.0e"}} min<sup>&ndash;1</sup> 
+            {{value.kcat|stringformat:".0f"}} &plusmn; {{value.err1|stringformat:"1.0e"}} min<sup>&ndash;1</sup>
           </td>
         </tr>
+      {% endif %}
+      {% if value.km %}
         <tr>
-      <th>K<sub><em>M</em></sub></th>
-      <td>{{value.km|stringformat:".5f"}} &plusmn; {{value.err2|stringformat:"1.0e"}} M</td>
-    </tr>
-    <tr>
-      <th>Efficiency</th>
-      <td>{{value.eff|stringformat:".0f"}} &plusmn; {{value.err3|stringformat:"1.0e"}} </td>
-    </tr>
+          <th>K<sub><em>M</em></sub></th>
+          <td>{{value.km|stringformat:".5f"}} &plusmn; {{value.err2|stringformat:"1.0e"}} M</td>
+        </tr>
+      {% endif %}
+        <tr>
+          <th>Efficiency</th>
+          <td>{{value.eff|stringformat:".0f"}} &plusmn; {{value.err3|stringformat:"1.0e"}} M<sup>&ndash;1</sup> min<sup>&ndash;1</sup> </td>
+        </tr>
       </table>
   </div>
-  <div class="col-md-3">
-    <a href="data:image/png;base64,{{ value.linear_plot }}">
+  <div class="col-md-4">
+    <a href="data:image/png;base64,{{ value.mm_plot }}">
       <img style="width:100%" src="data:image/png;base64,{{ value.linear_plot }}"/>
     </a>
   </div>
-  <div class="col-md-3">
-    <a href="data:image/png;base64,{{ value.mm_plot }}">
+  <div class="col-md-4">
+    <a href="data:image/png;base64,{{ value.linear_plot }}">
       <img style="width:100%" src="data:image/png;base64,{{ value.mm_plot }}"/>
     </a>
   </div>
@@ -49,10 +53,10 @@
 
 {% endfor %}
 
-  {% for field in form %} 
+  {% for field in form %}
     {{ field.as_hidden }}
   {% endfor %}
-  
+
   <input class="btn btn-primary" type="submit" value="Submit to SEEK" /></p>
 </form>
 

@@ -4,15 +4,15 @@ from pandas import read_csv
 from django.db.models import *
 from scipy.optimize import curve_fit
 from scipy.stats import linregress
-from scipy import arange 
+from numpy import linspace
 from django.forms import ModelForm, ValidationError
 
-# special import of matplotlib 
+# special import of matplotlib
 # do this before importing pylab or pyplot
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import StringIO 
+import StringIO
 
 def mm(S, kcat, km):
   return kcat*S/(km+S)
@@ -41,50 +41,53 @@ class Entry(Model):
   raw = TextField()
 
 def fit(data):
-  '''Attempts to fit a pandas DataFrame containing the columns kobs and s 
-     to the Michaelis-Menten equation and falls back to a linear fit to 
-     kcat/km if high error is observed. Also makes diagnostic plots''' 
+  '''Attempts to fit a pandas DataFrame containing the columns kobs and s
+     to the Michaelis-Menten equation and falls back to a linear fit to
+     kcat/km if high error is observed. Also makes diagnostic plots'''
 
-  # set up the plots 
+  # set up the plots
   fig = plt.figure()
-  ax = fig.add_subplot(111) 
-  ax.scatter( data.s, data.kobs )
+  ax = fig.add_subplot(111)
+  #ax.scatter( data.s, data.kobs )
   ax.grid(True)
   ax.set_xlabel('Substrate concentration (M)')
   ax.set_ylabel('Rate observed (M/s)')
   imgdata = StringIO.StringIO()
+  x_ = linspace( 0, data.s.max(), 100 )
+  ax.scatter( data.s, data.kobs )
 
-  # try the mm fit 
-  ( kcat, km ), cov = curve_fit( mm, data.s, data.kobs, p0=( data.kobs.max(),data.s.mean() ))
+  # try the mm fit
+  ( kcat, km ), cov = curve_fit( mm, data.s, data.kobs, p0=( data.kobs.max(),data.s.mean() ) )
   err1, err2 = [ abs(cov[i][i])**0.5 for i in range(2) ]
-  eff, err3 = (kcat/km, kcat*(err1/kcat)**2+km*(err2/km)**2)
 
   # try the linear fit
   slope, intercept, r_value, p_value, std_err = linregress( data.s, data.kobs )
 
-  # error checking 
+  # error checking
   if err1/kcat < 0.5 and err2/km < 0.5:
-    ax.scatter( arange(0,data.s.max(),100), [mm(x, kcat, km) for x in arange(0,data.s.max(),100) ] ) 
+    ax.plot( x_, [ mm( x, kcat, km ) for x in x_ ] )
+    eff, err3 = ( kcat/km, (kcat/km)*((err1/kcat)**2+km*(err2/km)**2)**0.5 )
+    print 'making ze mm fit with params %s %s' % ( kcat, km  )
   elif err1/kcat < 0.5 and err2/km > 0.5:
     km = err2 = None
     eff, err3 = slope, std_err
   elif err1/kcat > 0.5 and err2/km < 0.5:
     kcat = err1 = None
     eff, err3 = slope, std_err
-  elif err1/kcat > 0.5 and err2/km > 0.5: # both errors too high 
-    kcat = km = err1 = err2 =  None 
-    eff, err3 = slope, std_err 
+  elif err1/kcat > 0.5 and err2/km > 0.5: # both errors too high
+    kcat = km = err1 = err2 =  None
+    eff, err3 = slope, std_err
   else:
-    kcat = km = err1 = err2 = err3 = eff = None 
+    kcat = km = err1 = err2 = err3 = eff = None
 
-  # pick up the plotting again now that we have done error checking 
-  fig.savefig( imgdata, format='png' ) 
+  # pick up the plotting again now that we have done error checking
+  fig.savefig( imgdata, format='png' )
   imgdata.seek(0)
-  mm_plot = linear_plot = base64.b64encode( imgdata.read() ) 
+  mm_plot = linear_plot = base64.b64encode( imgdata.read() )
 
   return {  'substrate': '4-nitrophenyl-beta-D-glucoside',
             'cid' : '92930',
-            'yyield': data['yield'].mean(), 
+            'yyield': data['yield'].mean(),
             'kcat': kcat, 'err1': err1,
             'km': km, 'err2': err2,
             'eff': eff, 'err3': err3,
@@ -190,7 +193,7 @@ wt4,1.977,0.088939,0.00000
 """
 
   csv = TextField(default=example)
-  name = CharField(default="the SEEK Team", max_length=200) 
+  name = CharField(default="the SEEK Team", max_length=200)
 
 class DataEntryForm(ModelForm):
   class Meta:
@@ -200,4 +203,5 @@ class DataEntryForm(ModelForm):
   def process(self):
     data = read_csv(io.StringIO(self.cleaned_data['csv']))
     # should definitely try to clean up data here, check for S versus s, etc.
+    # just lowercasing would be a good start
     return data.groupby(by='sample').apply(fit).to_dict()
