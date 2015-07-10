@@ -83,6 +83,29 @@
 
     <h4>Residue energy</h4>
     <p>Mouse over residue so it is highlighted and hit Tab</p>
+
+    <h2>Rules of Thumb</h2>
+
+    <ul>
+    <li>NEVER WIGGLE (W) without selecting a sub-selection. </li>
+    <li>Sometimes high energies (mutations/conformations) are need to get to the low energy.</li>
+    <li>Importance of score is in order as it appears in the Tab menu</li>
+    <li>Native or close to native is generally better</li>
+    <li>Manually force the interaction you want and then side-chain wiggle (E) those residues and the ones around it</li>
+    <li>General order of operations:  E &rarr; S &rarr; E</li>
+    <li>If score is not dropping faster than 0.05/s you are likely at an energy minima.  This is true ONLY FOR Wiggling (W/E).  If you are shaking pay attention to the number of cycles on the upper left corner.  Often the low energy is found after 5-10 cycles (cycles is the number in the parenthesis after the timer).</li>
+    </ul>
+
+    <h2>General Energy Rules (on a per amino acid basis)</h2>
+
+    <ul>
+    <li>Energies less than 0 are good.</li>
+    <li>Energies 0 - +2 can be ok if clashing (fa_rep) is low (i.e. &lt;1)</li>
+    <li>Energies +2 - +5 are iffy… but can work if you think the "static" picture is missing the enabling feature</li>
+    <li>Energies +5 - +10 are are unlikely… something will likely have to move for this to work</li>
+    <li>Energies >+10 are really unlikely to work… but go for it if you have a good reason</li>
+    </ul>
+
   </div>
 
     <div class="col-md-6">
@@ -112,31 +135,12 @@
       <li>Select specific residue:  selection.Select(<res#>)</li>
       <li>Zoom to specific residue:  ui.CenterViewport(<res#>)</li>
       </ul>
+
+      <iframe width="560" height="315" 
+    src="https://www.youtube.com/embed/VhZoSxjVfd8" frameborder="0" allowfullscreen>
+  </iframe>
   </div>
-
-  <div class="col-md-6">
-    <h2>Rules of Thumb</h2>
-
-    <ul>
-    <li>NEVER WIGGLE (W) without selecting a sub-selection. </li>
-    <li>Sometimes high energies (mutations/conformations) are need to get to the low energy.</li>
-    <li>Importance of score is in order as it appears in the Tab menu</li>
-    <li>Native or close to native is generally better</li>
-    <li>Manually force the interaction you want and then side-chain wiggle (E) those residues and the ones around it</li>
-    <li>General order of operations:  E &rarr; S &rarr; E</li>
-    <li>If score is not dropping faster than 0.05/s you are likely at an energy minima.  This is true ONLY FOR Wiggling (W/E).  If you are shaking pay attention to the number of cycles on the upper left corner.  Often the low energy is found after 5-10 cycles (cycles is the number in the parenthesis after the timer).</li>
-    </ul>
-
-    <h2>General Energy Rules (on a per amino acid basis)</h2>
-
-    <ul>
-    <li>Energies less than 0 are good.</li>
-    <li>Energies 0 - +2 can be ok if clashing (fa_rep) is low (i.e. &lt;1)</li>
-    <li>Energies +2 - +5 are iffy… but can work if you think the "static" picture is missing the enabling feature</li>
-    <li>Energies +5 - +10 are are unlikely… something will likely have to move for this to work</li>
-    <li>Energies >+10 are really unlikely to work… but go for it if you have a good reason</li>
-    </ul>
-  </div>
+    
 </div>
 
 
@@ -152,6 +156,7 @@
     <h4>Genetic constructs</h4>
     <p>Create mutant plasmids using the <a href="">Siegel Lab protocol for Kunkel mutagenesis</a></p>
     <p>Alternatively, use the Transcriptic cloud laboratory platform to create your mutants. For more information, contact <a href="mailto:yin@transcriptic.com">Yin He</a> at <a href="https://www.transcriptic.com">Transcriptic</a></p>
+    <img src="/static/ray.png" height="300" width="500">
   </div>
 
   <div class="col-md-6">
