@@ -67,7 +67,7 @@ def fit(data):
   if err1/kcat < 0.5 and err2/km < 0.5:
     ax.plot( x_, [ mm( x, kcat, km ) for x in x_ ] )
     eff, err3 = ( kcat/km, (kcat/km)*((err1/kcat)**2+km*(err2/km)**2)**0.5 )
-    print 'making ze mm fit with params %s %s' % ( kcat, km  )
+    #print 'making ze mm fit with params %s %s' % ( kcat, km  )
   elif err1/kcat < 0.5 and err2/km > 0.5:
     km = err2 = None
     eff, err3 = slope, std_err
